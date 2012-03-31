@@ -29,7 +29,7 @@
     assign(@reason, $)
     if (equals(@player, '<noone>'),
         die(call_alias('/help ban')),
-        _true()
+        true
     )
     if (equals(@reason, '<noreason>'),
         assign(@reason, @default_ban_reason)
@@ -38,7 +38,7 @@
     set_pbanned(@player, true)
     if (equals(@broadcast_ban, 'true')
         broadcast(concat(color(GOLD), @player, color(WHITE), ' has been ', color(RED), 'banned ', color(WHITE), 'by ', color(GOLD), player(), color(WHITE), '!\n', color(GOLD), 'Reason: ', color(WHITE), @reason)),
-        _true()
+        true
     )
     
 <<<
@@ -48,12 +48,12 @@
     assign(@player, $player)
     if (equals(@player, '<noone>'),
         die(call_alias('/help ban')),
-        _true()
+        true
     )
     set_pbanned(@player, false)
     if (equals(@broadcast_unban, 'true')
         broadcast(concat(color(GOLD), @player, color(WHITE), ' has been ', color(GREEN), 'unbanned ', color(WHITE), 'by ', color(GOLD), player(), color(WHITE), '!')),
-        _true()
+        true
     )
     
 <<<

@@ -5,7 +5,7 @@
     if (equals(@player, '<me>'),
         assign(@player, player()),
         _checkforperm('spawn.other')
-        _true()
+        true
     )
     assign(@world, pworld(@player))
     assign(@spawn, get_spawn(@world))

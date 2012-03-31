@@ -2,8 +2,8 @@
     _checkforperm('pm')
     assign(@user, $user)
     assign(@message, $message)
-    if (equals(@user, '...nouser...'), die(run('/rules helppm')), _true())
-    if (equals(@message, '...nomessage...'), die(run('/rules helppm')), _true())
+    if (equals(@user, '...nouser...'), die(run('/rules helppm')), true)
+    if (equals(@message, '...nomessage...'), die(run('/rules helppm')), true)
     chat(concat('@', @user, ' ', @message))
 <<<
 

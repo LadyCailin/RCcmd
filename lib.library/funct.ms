@@ -32,8 +32,8 @@ proc(_iterate_cuboid, @b1, @b2, @proc_name,
     )
 )
 
-proc(_true, equals('1', '1'))
-proc(_false, equals('1', '0'))
+# proc(_true, equals('1', '1'))
+# proc(_false, equals('1', '0'))
 
 proc(_consolereport, @message,
     console(concat('§2[rccmd]§f ',  @message), false)
@@ -41,7 +41,7 @@ proc(_consolereport, @message,
 
 proc(_checkforperm, @perm, if (has_permission(concat('rccmd.', @perm)),
         _consolereport(concat('§2', player(), '§f has the permission §6rccmd.', @perm, '§f! Access granted.'))
-        _true(),
+        true,
         _consolereport(concat('§c', player(), '§f does not have the permission§2 ', 'rccmd.', @perm, '§f! Access denied.'))
         die('§cYou do not have permission.')
     )

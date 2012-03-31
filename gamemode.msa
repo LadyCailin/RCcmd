@@ -1,7 +1,7 @@
 *:/gamemode [$player='<myself>'] = >>>
     _checkforperm('gamemode')
     assign(@player, $player)
-    if (equals(@player, '<myself>'), assign(@player, player()), _true())
+    if (equals(@player, '<myself>'), assign(@player, player()), true)
     if (equals(pmode(@player), 'CREATIVE'), set_pmode(@player, SURVIVAL), set_pmode(@player, CREATIVE))
 <<<
 

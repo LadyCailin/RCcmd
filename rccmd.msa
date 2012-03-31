@@ -69,7 +69,7 @@
 #*:/gamemode [$player='<myself>'] = >>>
 #    _checkforperm('gamemode')
 #    assign(@player, $player)
-#    if (equals(@player, '<myself>'), assign(@player, player()), _true())
+#    if (equals(@player, '<myself>'), assign(@player, player()), true)
 #    if (equals(pmode(@player), 'CREATIVE'), set_pmode(@player, SURVIVAL), set_pmode(@player, CREATIVE))
 #<<<
 
@@ -110,7 +110,7 @@
 #    assign(@text, $)
 #    if (equals(@line, 'help'),
 #        call_alias('/rules helpsign'),
-#        _true()
+#        true
 #    )
 #    ifelse (equals(@line, 1),
 #            set_sign_text(pcursor(), @text, array_get(get_sign_text(pcursor()), 1), array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),
@@ -126,7 +126,7 @@
 #*:/spawnmob [$mob='list'] [$amount='1'] [$location='myloc'] = >>>
 #    _checkforperm('spawnmob')
 #    assign(@mob, $mob)
-#    if (equals(@mob, 'list'), die(concat(color(GOLD), 'List of mobs: ', color(WHITE), 'BLAZE, CAVESPIDER, CHICKEN, COW, CREEPER, ENDERDRAGON, ENDERMAN, GHAST, IRONGOLEM, MAGMACUBE, MOOSHROOM, OCELOT, PIG, PIGZOMBIE, SHEEP, SILVERFISH, SKELETON, SLIME, SPIDER, SPIDERJOCKEY, SQUID, VILLAGER, WOLF, ZOMBIE.\n', color(GOLD), 'Maximum spawn limit is 50.')), _true())
+#    if (equals(@mob, 'list'), die(concat(color(GOLD), 'List of mobs: ', color(WHITE), 'BLAZE, CAVESPIDER, CHICKEN, COW, CREEPER, ENDERDRAGON, ENDERMAN, GHAST, IRONGOLEM, MAGMACUBE, MOOSHROOM, OCELOT, PIG, PIGZOMBIE, SHEEP, SILVERFISH, SKELETON, SLIME, SPIDER, SPIDERJOCKEY, SQUID, VILLAGER, WOLF, ZOMBIE.\n', color(GOLD), 'Maximum spawn limit is 50.')), true)
 #    assign(@amount, $amount)
 #    assign(@player, player())
 #    assign(@location, pcursor(@player))
@@ -159,8 +159,8 @@
 #    _checkforperm('pm')
 #    assign(@user, $user)
 #    assign(@message, $message)
-#    if (equals(@user, '...nouser...'), die(run('/rules helppm')), _true())
-#    if (equals(@message, '...nomessage...'), die(run('/rules helppm')), _true())
+#    if (equals(@user, '...nouser...'), die(run('/rules helppm')), true)
+#    if (equals(@message, '...nomessage...'), die(run('/rules helppm')), true)
 #    chat(concat('@', @user, ' ', @message))
 #<<<
 
@@ -186,7 +186,7 @@
 #    if (equals(@player, '<me>'),
 #        assign(@player, player()),
 #        _checkforperm('spawn.other')
-#        _true()
+#        true
 #    )
 #    assign(@world, pworld(@player))
 #    assign(@spawn, get_spawn(@world))

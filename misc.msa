@@ -8,7 +8,7 @@
     assign(@text, $)
     if (equals(@line, 'help'),
         call_alias('/rules helpsign'),
-        _true()
+        true
     )
     ifelse (equals(@line, 1),
             set_sign_text(pcursor(), @text, array_get(get_sign_text(pcursor()), 1), array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),
