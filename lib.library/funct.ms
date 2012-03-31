@@ -39,7 +39,8 @@ proc(_consolereport, @message,
     console(concat('§2[rccmd]§f ',  @message), false)
 )
 
-proc(_checkforperm, @perm, if (has_permission(concat('rccmd.', @perm)),
+proc(_checkforperm, @perm,
+    if (has_permission(concat('rccmd.', @perm)),
         _consolereport(concat('§2', player(), '§f has the permission §6rccmd.', @perm, '§f! Access granted.'))
         true,
         _consolereport(concat('§c', player(), '§f does not have the permission§2 ', 'rccmd.', @perm, '§f! Access denied.'))

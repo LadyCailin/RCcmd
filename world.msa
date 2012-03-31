@@ -22,24 +22,24 @@
     if (equals(@world, '<current>'), assign(@world, pworld(player())))
     ifelse (equals(@set, 'off'), 
             storm(false, @world)
-            broadcast(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.'))
-            console(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true)
+            try(console(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
             equals(@set, 'on'),
             storm(true, @world)
-            broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')) 
-            console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true) 
+            try(console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
             equals(@set, 'rain'),
             storm(true, @world)
-            broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.'))
-            console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true)
+            try(console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
             equals(@set, 'snow'), 
             storm(true, @world)
-            broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.'))
-            console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true)
+            try(console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
             equals(@set, 'sunny'),
             storm(false, @world)
-            broadcast(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.'))
-            console(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true)
+            try(console(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
             equals(@set, 'help'), run('/rules helpweather')
      )
 <<<

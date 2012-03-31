@@ -2,12 +2,16 @@
     /save-all
 <<<
 
-*:/sign [$line='help'] [$=''] = >>>
+*:/sign [$line='help'] [$='<nothing>'] = >>>
     _checkforperm('sign')
     assign(@line, $line)
     assign(@text, $)
     if (equals(@line, 'help'),
-        call_alias('/rules helpsign'),
+        call_alias('/help sign'),
+        true
+    )
+    if (equals(@text, '<nothing>'),
+        call_alias('/help sign'),
         true
     )
     ifelse (equals(@line, 1),

@@ -1,6 +1,5 @@
 *:/spawn [$player='<me>'] = >>>
     _checkforperm('spawn')
-    assign(@timeout, 5)
     assign(@player, $player)
     if (equals(@player, '<me>'),
         assign(@player, player()),
@@ -14,7 +13,10 @@
     assign(@y, floor(array_get(@loc,1)))
     assign(@z, floor(array_get(@loc,2)))
     msg(color(GOLD), 'You might want to remember your coordinates: ', color(RED), @x, ', ', @y, ', ', @z, '.')
-    msg(color(GRAY), 'Teleporting you to spawn in ', @timeout, ' seconds...')
-    set_timeout(multiply(@timeout, 1000), closure(set_ploc(@player, @spawn)))
+    if (equals(@spawn_warmup, '0'), 
+        msg(color(GRAY), 'Teleporting you to spawn...'),
+        msg(color(GRAY), 'Teleporting you to spawn in ', @timeout, ' seconds...')
+        set_timeout(multiply(@timeout, 1000), closure(set_ploc(@player, @spawn)))
+    )
 <<<
 

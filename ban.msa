@@ -5,7 +5,7 @@
     foreach(@bans, @p,
         assign(@bl, concat(@bl, @p, ' '))
     )
-    assign(@ipbans, parse_args(replace(read('../../../banned-ips.txt'), '\n', ' ')))
+    assign(@ipbans, parse_args(replace(read(@bannedips_file), '\n', ' ')))
     assign(@ipbl, 'Banned IPs: ')
     foreach(@ipbans, @ip,
         assign(@ipbl, concat(@ipbl, @ip, ' '))
@@ -34,7 +34,7 @@
     if (equals(@reason, '<noreason>'),
         assign(@reason, @default_ban_reason)
     )
-    kick(@player, @reason
+    kick(@player, @reason)
     set_pbanned(@player, true)
     if (equals(@broadcast_ban, 'true')
         broadcast(concat(color(GOLD), @player, color(WHITE), ' has been ', color(RED), 'banned ', color(WHITE), 'by ', color(GOLD), player(), color(WHITE), '!\n', color(GOLD), 'Reason: ', color(WHITE), @reason)),
