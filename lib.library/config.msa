@@ -1,0 +1,21 @@
+# rccmd configuration, i'll elaborate on what exactly everything is when i have
+# time, sorry! i hope most of the variables are self explanitory in their names
+# though, but the source is fairly easy to read, so if you don't understand one,
+# just look in the source code. if you've really got problems, just contact me
+# on IRC, which can be found in the README.md
+# i realise some values like servername and maxplayers could be found through get_server_info()
+# but, my version of commandhelper seems to have it bugged. not sure why, though.
+
+assign(@server_name, 'rcfreak0\'s Server')
+assign(@max_players, '20')
+
+assign(@rccmd_activated_msg_on_startup, 'true')
+
+assign(@death_stats, 'true')
+assign(@death_stats_message, concat('Experience you\'ve lost: ', @xp, ' orbs. -- Sucks, bro.', 'Coordinates where you died: ', @x, ', ', @y, ', ', @z, '.\nI\'d get to moving, you only have about 5 minutes left till your items are gone.'))
+
+assign(@motd_on_join, 'true')
+assign(@list_on_join, 'true')
+assign(@motd, concat('Hello §6', @player, '§f, and §6welcome to ', @server_name, '§f!\n§6WWW§f: §2www.rcfreak0.com §f:: §6IRC§f: §2#rcfreak0§f@§2irc.efnet.org'))
+
+assign(@default_ban_reason, 'You have been banned. Appeal your ban on the IRC channel, if you so wish to.')

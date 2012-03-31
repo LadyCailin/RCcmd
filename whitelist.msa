@@ -1,0 +1,10 @@
+*:/whitelist = /rules helpwhitelist
+
+*:/whitelist check = /rules helpwhitelist
+
+*:/whitelist check $player = >>>
+    _checkforperm('whitelist.check')
+    assign(@player, $player)
+    if (pwhitelisted(@player), msg(concat(color(GOLD), @player, color(WHITE), ' is whitelisted.')), msg(concat(color(GOLD), @player, color(WHITE), ' is not whitelisted.')))
+<<<
+

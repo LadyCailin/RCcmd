@@ -1,0 +1,23 @@
+*:/msg [$user='...nouser...'] [$message='...nomessage...'] = >>>
+    _checkforperm('pm')
+    assign(@user, $user)
+    assign(@message, $message)
+    if (equals(@user, '...nouser...'), die(run('/rules helppm')), _true())
+    if (equals(@message, '...nomessage...'), die(run('/rules helppm')), _true())
+    chat(concat('@', @user, ' ', @message))
+<<<
+
+*:/tell [$=''] = >>>
+    call_alias(concat('/msg ', $))
+<<<
+
+*:/pm [$=''] = >>>
+    call_alias(concat('/msg ', $))
+<<<
+
+*:/r = run('/rules helppm')
+*:/r $ = >>>
+    _checkforperm('pm')
+    assign(@message, $)
+    chat(concat('@@', @message))
+<<<

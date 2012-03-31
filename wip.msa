@@ -1,0 +1,23 @@
+#*:/waypoint [$action='help'] [$name='none'] [$coords='none'] = >>>
+#    _checkforperm('waypoint')
+#    assign(@action, $action)
+#    assign(@name, $name)
+#    assign(@player, player())
+#    assign(@coords, $coords)
+#    ifelse (equals(@action, 'help'),
+#        run('/rules helpwaypoint'),
+#        equals(@action, 'add'),
+#        if (equals(@name, 'none')
+#            
+#        )
+#        if (equals(@coords, 'none'),
+#            die(run('/rules helpwaypoint')),
+#            assign(@coords, reg_split(',', @coords))
+#            assign(@x, array_get(@coords, 0))
+#            assign(@y, array_get(@coords, 1))
+#            assign(@z, array_get(@coords, 2))
+#        )
+#        
+#        store_value(concat('waypoints.', @player), concat(':', @x, ':', @y, ':', @z))
+#    )
+#<<<

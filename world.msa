@@ -1,0 +1,45 @@
+*:/time [$time=none] [$world='<current>'] = >>>
+    _checkforperm('time')
+    assign(@time, $time)
+    assign(@world, $world)
+    #if (equals(@time, none), run('/rules helptime'), die())
+    if (equals(@world, '<current>'), assign(@world, pworld(player())))
+    ifelse (equals(@time, 'none'), run('/rules helptime'),
+            equals(@time, 'current'), msg(concat(color(GOLD), 'Current time in ', @world, ': ', color(WHITE), get_world_time(@world))),
+            equals(@time, 'day'), set_world_time(@world, 6000),
+            equals(@time, 'dawn'), set_world_time(@world, 0),
+            equals(@time, 'afternoon'), set_world_time(@world, 12000),
+            equals(@time, 'dusk'), set_world_time(@world, 12000),
+            equals(@time, 'night'), set_world_time(@world, 12000),
+            equals(@time, 'help'), run('/rules helptime')
+     )
+<<<
+
+*:/weather [$set='help'] [$world='<current>'] = >>>
+    _checkforperm('weather')
+    assign(@world, $world)
+    assign(@set, $set)
+    if (equals(@world, '<current>'), assign(@world, pworld(player())))
+    ifelse (equals(@set, 'off'), 
+            storm(false, @world)
+            broadcast(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.'))
+            console(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            equals(@set, 'on'),
+            storm(true, @world)
+            broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')) 
+            console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            equals(@set, 'rain'),
+            storm(true, @world)
+            broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.'))
+            console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            equals(@set, 'snow'), 
+            storm(true, @world)
+            broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.'))
+            console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            equals(@set, 'sunny'),
+            storm(false, @world)
+            broadcast(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.'))
+            console(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')),
+            equals(@set, 'help'), run('/rules helpweather')
+     )
+<<<

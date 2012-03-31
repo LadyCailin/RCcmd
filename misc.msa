@@ -1,0 +1,23 @@
+*:/save [$=''] = >>>
+    /save-all
+<<<
+
+*:/sign [$line='help'] [$=''] = >>>
+    _checkforperm('sign')
+    assign(@line, $line)
+    assign(@text, $)
+    if (equals(@line, 'help'),
+        call_alias('/rules helpsign'),
+        _true()
+    )
+    ifelse (equals(@line, 1),
+            set_sign_text(pcursor(), @text, array_get(get_sign_text(pcursor()), 1), array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),
+            equals(@line, 2),
+            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), @text, array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),
+            equals(@line, 3),
+            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), array_get(get_sign_text(pcursor()), 1), @text, array_get(get_sign_text(pcursor()), 3)),
+            equals(@line, 4)
+            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), array_get(get_sign_text(pcursor()), 1), array_get(get_sign_text(pcursor()), 2), @text)
+    )
+<<<
+

@@ -1,0 +1,4 @@
+*:/ra = >>>
+    msg('Reloading aliases...')
+    /reloadaliases
+<<<

@@ -1,0 +1,11 @@
+*:/list [$=''] = >>>
+    _checkforperm('list')
+    assign(@players, all_players())
+    assign(@formatplayers, replace(@players, '{', ''))
+    assign(@formatplayers, replace(@formatplayers, '}', ''))
+    msg(concat(color(GOLD), length(@players), ' players are currently on: ', color(WHITE), @formatplayers))
+<<<
+
+*:/who [$=''] = call_alias(concat('/list ', $))
+*:/players [$=''] = call_alias(concat('/list ', $))
+*:/online [$=''] = call_alias(concat('/list ', $))

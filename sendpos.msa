@@ -1,0 +1,17 @@
+*:/sendpos = call_alias('/help sendpos')
+
+*:/sendpos $player = >>>
+    _checkforperm('sendpos')
+    assign(@player, $player)
+    if (equals(@player, player()), msg('Why would you ever send your coords to yourself?\nJust use /getpos.'),
+    assign(@loc, ploc(player()))
+    assign(@x, floor(array_get(@loc,0)))
+    assign(@y, floor(array_get(@loc,1)))
+    assign(@z, floor(array_get(@loc,2)))
+    assign(@world, array_get(@loc,3))
+    if (ponline(@player),
+        msg(concat(color(GOLD), @player, color(WHITE), ' has recieved your coordinates!'))
+        tmsg(@player, concat(color(GOLD), player(), color(WHITE), ' has sent you his/her coordinates:\n', color(GOLD), @x, ', ', @y, ', ', @z, '.')),
+        msg(concat(color(GOLD), @player, color(WHITE), ' is not online, or is not a player.')))
+    )
+<<<
