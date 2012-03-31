@@ -7,6 +7,7 @@ if (equals(@rccmd_activated_msg_on_startup, 'true'),
 
 bind(player_join, null, null, @event,
     assign(@player, @event[player])
+    include('lib.library/config.msa')
     if (equals(@motd_on_join, 'true')
         tmsg(@event[player], concat(@motd)),
         true
