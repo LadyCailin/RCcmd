@@ -1,5 +1,5 @@
 *:/list [$=''] = >>>
-    has_permission('rccmd.list')
+    if (has_permission('rccmd.list'), true, die(color(RED), 'You do not have permission.'))
     assign(@players, all_players())
     assign(@formatplayers, replace(@players, '{', ''))
     assign(@formatplayers, replace(@formatplayers, '}', ''))

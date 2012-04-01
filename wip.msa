@@ -1,5 +1,5 @@
 #*:/waypoint [$action='help'] [$name='none'] [$coords='none'] = >>>
-#    has_permission('rccmd.waypoint')
+#    if (has_permission('rccmd.waypoint'), true, die(color(RED), 'You do not have permission.'))
 #    assign(@action, $action)
 #    assign(@name, $name)
 #    assign(@player, player())

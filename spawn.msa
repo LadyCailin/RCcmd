@@ -1,9 +1,9 @@
 *:/spawn [$player='<me>'] = >>>
-    has_permission('rccmd.spawn')
+    if (has_permission('rccmd.spawn'), true, die(color(RED), 'You do not have permission.'))
     assign(@player, $player)
     if (equals(@player, '<me>'),
         assign(@player, player()),
-        has_permission('rccmd.spawn.other')
+        if (has_permission('rccmd.spawn.other'), true, die(color(RED), 'You do not have permission.'))
         true
     )
     assign(@world, pworld(@player))

@@ -1,5 +1,5 @@
 *:/calc [$=''] = >>>
-    has_permission('rccmd.calc')
+    if (has_permission('rccmd.calc'), true, die(color(RED), 'You do not have permission.'))
     assign(@dog, $)
     msg(concat(color(GOLD), @dog, color(WHITE), ' = ', color(GREEN), round(expr(@dog))))
 <<<

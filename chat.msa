@@ -1,6 +1,6 @@
 # 'clears' the chat window
 *:/clear = >>>
-    has_permission('rccmd.chat.clear')
+    if (has_permission('rccmd.chat.clear'), true, die(color(RED), 'You do not have permission.'))
     msg('')
     msg('')
     msg('')

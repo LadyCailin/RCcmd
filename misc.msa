@@ -3,7 +3,7 @@
 <<<
 
 *:/sign [$line='help'] [$='<nothing>'] = >>>
-    has_permission('rccmd.sign')
+    if (has_permission('rccmd.sign'), true, die(color(RED), 'You do not have permission.'))
     assign(@line, $line)
     assign(@text, $)
     if (equals(@line, 'help'),
