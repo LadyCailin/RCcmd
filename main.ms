@@ -26,8 +26,8 @@ bind(player_join, null, null, @event,
             )
             store_value(concat(@event[player], '.welcome'), 'true')
         )
-        )
         true
+        ), true
     )
 )
 
