@@ -1,6 +1,6 @@
 # 'clears' the chat window
 *:/clear = >>>
-    _checkforperm('chat.clear')
+    has_permission('rccmd.chat.clear')
     msg('')
     msg('')
     msg('')

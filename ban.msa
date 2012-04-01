@@ -1,5 +1,5 @@
 *:/listbans = >>>
-    _checkforperm('ban.list')
+    has_permission('rccmd.ban.list')
     assign(@bans, get_banned_players())
     assign(@bl, 'Banned players: ')
     foreach(@bans, @p,
@@ -18,13 +18,13 @@
 
 *:/isbanned = /help isbanned
 *:/isbanned $player = >>>
-    _checkforperm('ban.check')
+    has_permission('rccmd.ban.check')
     assign(@player, $player)
     if (pbanned(@player), msg(concat(color(GOLD), @player, color(WHITE), ' is banned.')), msg(concat(color(GOLD), @player, color(WHITE), ' is not banned.')))
 <<<
 
 *:/ban [$player='<noone>'] [$='<noreason>'] = >>>
-    _checkforperm('ban')
+    has_permission('rccmd.ban')
     assign(@player, $player)
     assign(@reason, $)
     if (equals(@player, '<noone>'),
@@ -44,7 +44,7 @@
 <<<
 
 *:/unban [$player='<noone>'] = >>>
-    _checkforperm('ban.unban')
+    has_permission('rccmd.ban.unban')
     assign(@player, $player)
     if (equals(@player, '<noone>'),
         die(call_alias('/help ban')),

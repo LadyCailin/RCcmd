@@ -1,7 +1,7 @@
 *:/sendpos = call_alias('/help sendpos')
 
 *:/sendpos $player = >>>
-    _checkforperm('sendpos')
+    has_permission('rccmd.sendpos')
     assign(@player, $player)
     if (equals(@player, player()), msg('Why would you ever send your coords to yourself?\nJust use /getpos.'),
     assign(@loc, ploc(player()))

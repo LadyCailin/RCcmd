@@ -1,5 +1,5 @@
 *:/gamemode [$player='<myself>'] = >>>
-    _checkforperm('gamemode')
+    has_permission('rccmd.gamemode')
     assign(@player, $player)
     if (equals(@player, '<myself>'), assign(@player, player()), true)
     if (equals(pmode(@player), 'CREATIVE'), set_pmode(@player, SURVIVAL), set_pmode(@player, CREATIVE))

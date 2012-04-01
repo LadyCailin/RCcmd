@@ -1,5 +1,5 @@
 *:/spawnmob [$mob='list'] [$amount='1'] [$location='myloc'] = >>>
-    _checkforperm('spawnmob')
+    has_permission('rccmd.spawnmob')
     assign(@mob, $mob)
     if (equals(@mob, 'list'), die(concat(color(GOLD), 'List of mobs: ', color(WHITE), 'BLAZE, CAVESPIDER, CHICKEN, COW, CREEPER, ENDERDRAGON, ENDERMAN, GHAST, IRONGOLEM, MAGMACUBE, MOOSHROOM, OCELOT, PIG, PIGZOMBIE, SHEEP, SILVERFISH, SKELETON, SLIME, SPIDER, SPIDERJOCKEY, SQUID, VILLAGER, WOLF, ZOMBIE.\n', color(GOLD), 'Maximum spawn limit is 50.')), true)
     assign(@amount, $amount)

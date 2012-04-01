@@ -1,5 +1,5 @@
 *:/time [$time=none] [$world='<current>'] = >>>
-    _checkforperm('time')
+    has_permission('rccmd.time')
     assign(@time, $time)
     assign(@world, $world)
     #if (equals(@time, none), run('/rules helptime'), die())
@@ -16,7 +16,7 @@
 <<<
 
 *:/weather [$set='help'] [$world='<current>'] = >>>
-    _checkforperm('weather')
+    has_permission('rccmd.weather')
     assign(@world, $world)
     assign(@set, $set)
     if (equals(@world, '<current>'), assign(@world, pworld(player())))

@@ -1,5 +1,5 @@
 *:/afk [$=''] = >>>
-    _checkforperm('afk')
+    has_permission('rccmd.afk')
     assign(@key, 'afk')
     if(or(equals(get_value(@key), null), equals(get_value(@key), '')),
         g(
@@ -31,7 +31,7 @@
 <<<
 
 *:/listafk [$=''] = >>>
-    _checkforperm('list.afk')
+    has_permission('rccmd.list.afk')
     assign(@key, 'afk')
     if(or(equals(get_value(@key), null), equals(get_value(@key), '')), msg('No one is AFK.'),
         g(

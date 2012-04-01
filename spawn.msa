@@ -1,9 +1,9 @@
 *:/spawn [$player='<me>'] = >>>
-    _checkforperm('spawn')
+    has_permission('rccmd.spawn')
     assign(@player, $player)
     if (equals(@player, '<me>'),
         assign(@player, player()),
-        _checkforperm('spawn.other')
+        has_permission('rccmd.spawn.other')
         true
     )
     assign(@world, pworld(@player))

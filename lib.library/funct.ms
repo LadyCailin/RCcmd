@@ -32,9 +32,6 @@ proc(_iterate_cuboid, @b1, @b2, @proc_name,
     )
 )
 
-# proc(_true, equals('1', '1'))
-# proc(_false, equals('1', '0'))
-
 proc(_consolereport, @message,
     console(concat('§2[rccmd]§f ',  @message), false)
 )
