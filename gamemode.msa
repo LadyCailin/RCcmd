@@ -1,5 +1,5 @@
 *:/gamemode [$player='<myself>'] = >>>
-    if (has_permission('rccmd.gamemode'), true, die(color(RED), 'You do not have permission.'))
+    if (has_permission('rccmd.gamemode'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@player, $player)
     if (equals(@player, '<myself>'), assign(@player, player()), true)
     if (equals(pmode(@player), 'CREATIVE'), set_pmode(@player, SURVIVAL), set_pmode(@player, CREATIVE))
