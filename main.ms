@@ -17,11 +17,16 @@ bind(player_join, null, null, @event,
         true
     )
     if (equals(@welcome_on_join, 'true')
-        foreach(all_players(), @pl,
-            if (equals(@pl, @event[player]), true,
-                tmsg(@pl, concat('§e', 'Welcome §6', @event[player], '§e to the server!'))
+        if (has_value(concat(@event[player], '.welcome'),
+            true,
+            foreach(all_players(), @pl,
+                if (equals(@pl, @event[player]), true,
+                    tmsg(@pl, concat('§e', 'Welcome §6', @event[player], '§e to the server!'))
+                )
             )
-        ),
+            store_value(concat(@event[player], '.welcome'), 'true')
+        )
+        )
         true
     )
 )

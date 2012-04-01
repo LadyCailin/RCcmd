@@ -14,6 +14,7 @@ assign(@rccmd_activated_msg_on_startup, 'false') # spams for some reason on star
 assign(@death_stats, 'true')
 assign(@death_stats_message, concat('Experience you\'ve lost: ', @xp, ' orbs. -- Sucks, bro.\nCoordinates where you died: ', @x, ', ', @y, ', ', @z, '.\nI\'d get to moving, you only have about 5 minutes left till your items are gone.'))
 
+assign(@welcome_on_join, 'true')
 assign(@motd_on_join, 'true')
 assign(@list_on_join, 'true')
 assign(@motd, concat('Hello §6', @player, '§f, and §6welcome to ', @server_name, '§f!\n§6WWW§f: §2www.rcfreak0.com §f:: §6IRC§f: §2#rcfreak0§f@§2irc.efnet.org'))
