@@ -17,7 +17,7 @@ bind(player_join, null, null, @event,
         true
     )
     if (equals(@welcome_on_join, 'true')
-        if (has_value(concat(@event[player], '.welcome'),
+        if (has_value(concat(@event[player], '.welcome')),
             true,
             foreach(all_players(), @pl,
                 if (equals(@pl, @event[player]), true,
@@ -25,7 +25,6 @@ bind(player_join, null, null, @event,
                 )
             )
             store_value(concat(@event[player], '.welcome'), 'true')
-        )
         true
         ), true
     )
