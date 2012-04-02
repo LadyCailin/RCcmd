@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>RCcmd by hunterm</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>RCcmd</h1>
+        <p>a very lightweight and slim replacement for craftbukkit &quot;general&quot; plugins. used on the rcfreak0 minecraft server.</p>
+        <p class="view"><a href="https://github.com/hunterm/RCcmd">View the Project on GitHub <small>hunterm/RCcmd</small></a></p>
+        <ul>
+          <li><a href="https://github.com/hunterm/RCcmd/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/hunterm/RCcmd/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/hunterm/RCcmd">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>rccmd</h1>
+
+<h3><strong>a very lightweight and slim replacement for craftbukkit "general" plugins.</strong></h3>
+
+<h2>what is this?</h2>
+
+<p>rccmd is a collection of scripts for <a href="http://wiki.sk89q.com/wiki/CommandHelper">CommandHelper</a>. It was created for a private Minecraft server I help run, because me and the owner both agreed that CommandBook, our previous "general commands" plugin was too bloated for our tastes now, and we have been trying to keep our server a very vanilla-Minecraft experience. I suggested that we try out CommandHelper, and we make our own commands, thus this was born.</p>
+
+<h2>what makes this better than <a href="http://dev.bukkit.org/server-modes/Essentials">Essentials</a>, or <a href="http://dev.bukkit.org/server-mods/CommandBook">CommandBook</a>?</h2>
+
+<p>Nothing, I suppose. It was created because it was less bloated, and gave me a nice project. I personally think both of them are too big. Maybe it's just more vanilla-ish? More lightweight? You tell me.</p>
+
+<h2>what commands does this have?</h2>
+
+<p>I suck at documentation, but I suppose a nice little list of commands and their permissions wouldn't hurt.</p>
+
+<ul>
+<li>
+<p><em>Spawn commands</em></p>
+
+<ul>
+<li>/spawn [player], use it to teleport users to the spawn point of the world. there's currently no way to set the world's spawn in CommandHelper's API yet, but when there is, i'll add a /setspawn command.
+
+<ul>
+<li>if [player] is provided, it will send [player] to the spawn point.</li>
+<li>rccmd.spawn: use /spawn command</li>
+<li>rccmd.spawn.other: use /spawn [player]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Aliases</em></p>
+
+<ul>
+<li>/ra, just an alias for reloading commandhelper files. mainly used during development.</li>
+<li>/save, just an alias to /save-all.</li>
+</ul>
+</li>
+<li>
+<p><em>AFK commands</em></p>
+
+<ul>
+<li>/afk, which broadcasts a message saying "&lt;playername&gt; is now afk."
+
+<ul>
+<li>keep in mind that /afk is a toggle. if you're afk, it'll say "&lt;playername&gt; is no longer afk."</li>
+<li>afk status is stored in commandhelper persistance.</li>
+<li>rccmd.afk: use /afk command</li>
+</ul>
+</li>
+<li>/listafk, which gives you a list of the people currently afk.
+
+<ul>
+<li>rccmd.list.afk: use /listafk</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Coordinate-related commands</em></p>
+
+<ul>
+<li>/getpos [player], which tells you (or [player]'s) your coordinates in the current world.
+
+<ul>
+<li>rccmd.getpos: use /getpos</li>
+<li>rccmd.getpos.other: use /getpos [player]</li>
+</ul>
+</li>
+<li>/sendpos &lt;player&gt;, which sends your current coordinates in the current world to &lt;player&gt;.
+
+<ul>
+<li>rccmd.sendpos: use /sendpos</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Ban commands</em></p>
+
+<ul>
+<li>/ban &lt;player&gt; [reason], which bans &lt;player&gt;. if [reason] given, will kick &lt;player&gt; with [reason] before banning.
+
+<ul>
+<li>rccmd.ban: use /ban</li>
+</ul>
+</li>
+<li>/unban &lt;player&gt;, which unbans &lt;player&gt;. duh.
+
+<ul>
+<li>rccmd.ban.unban: use /unban</li>
+<li>aliases: /pardon</li>
+</ul>
+</li>
+<li>/listbans, which lists the banned players and IP addresses.
+
+<ul>
+<li>rccmd.ban.list: use /listbans</li>
+<li>aliases: /bans, /banlist</li>
+</ul>
+</li>
+<li>/isbanned &lt;player&gt;, which tells you if &lt;player&gt; is banned or not.
+
+<ul>
+<li>rccmd.ban.check: use /isbanned</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Chat commands</em></p>
+
+<ul>
+<li>/clear, just prints enough blank lines to "clear" the chat window.</li>
+<li>/msg &lt;player&gt; &lt;message&gt;, please note that these commands are used for making EasyPM work with commands. soon, rccmd will have it's own private messaging commands without the need for EasyPM.
+
+<ul>
+<li>rccmd.pm: use /msg, /tell, or /pm</li>
+<li>aliases: /tell, /pm</li>
+</ul>
+</li>
+<li>/r &lt;message&gt;, messages the person that last PM'd you.
+
+<ul>
+<li>rccmd.pm: use /r</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Gamemode commands</em></p>
+
+<ul>
+<li>/gamemode [player], toggles game mode. if [player] given, it changes [player]'s mode
+
+<ul>
+<li>rccmd.gamemode: use /gamemode</li>
+<li>aliases: /gm</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Death related commands</em></p>
+
+<ul>
+<li>/kill, ;)
+
+<ul>
+<li>rccmd.kill: use /kill</li>
+</ul>
+</li>
+<li>/killmepleaseohgodplease, actually kills you
+
+<ul>
+<li>rccmd.kill: use /killmepleaseohgodplease</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Math related commands</em></p>
+
+<ul>
+<li>/calc &lt;equation&gt;, calculates the answer to &lt;equation&gt;
+
+<ul>
+<li>rccmd.calc: use /calc</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Mob commands</em></p>
+
+<ul>
+<li>/spawnmob &lt;mob&gt; [amount] [location], spawns [amount] [mob]s at [location]. if no [amount], assumes 1. if no &lt;mob&gt;, lists mobs. if no [location], spawns at player cursor location.
+
+<ul>
+<li>rccmd.spawnmob: use /spawnmob</li>
+<li>there is a commandhelper-forced limit of 50 mobs per command. sorry.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Player-related commands</em></p>
+
+<ul>
+<li>/list, lists the players currently on the server.
+
+<ul>
+<li>rccmd.list: use list</li>
+<li>aliases: /players, /who, /online</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Administration commands</em></p>
+
+<ul>
+<li>/whitelist, this is actually just the vanilla whitelist command that comes with bukkit. rccmd equivilant coming soon.
+
+<ul>
+<li>bukkit.command.whitelist: use /whitelist</li>
+</ul>
+</li>
+<li>/whitelist check &lt;player&gt;, checks if &lt;player&gt; is in the whitelist or not.
+
+<ul>
+<li>rccmd.whitelist.check: use /whitelist check</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>World commands</em></p>
+
+<ul>
+<li>/time &lt;current|day|dawn|afternoon|dusk|night&gt; [world], sets [world] to &lt;time&gt;. if no [world] given, uses player's current world.
+
+<ul>
+<li>rccmd.time: use /time</li>
+</ul>
+</li>
+<li>/weather &lt;off|on|rain|snow|sunny&gt; [world], makes it rain/snow/sunny, whatever, in [world]. if no [world] given, uses current player's world.
+
+<ul>
+<li>rccmd.weather: use /weather</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em>Miscellaneous commands</em></p>
+
+<ul>
+<li>/sign &lt;line #&gt; &lt;content&gt;, edits sign &lt;line #&gt; that player is pointing at to say &lt;content&gt;
+
+<ul>
+<li>rccmd.sign: use /sign</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h2>where can I get help?</h2>
+
+<p>Look on the <a href="http://www.rcfreak0.com">website</a> for the server in the Minecraft category, then go to the <a href="http://rcfreak0.com/viewtopic.php?f=1&amp;t=46">RCcmd topic</a>. Or, talk to me on the <a>IRC channel</a>, on EFNet at #rcfreak0. If you've got a bug or feature request, create a request or issue in the Issues section.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/hunterm">hunterm</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
