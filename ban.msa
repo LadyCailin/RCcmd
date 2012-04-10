@@ -49,7 +49,7 @@
 
 #*:/banip [$ip='<noone>'] [$='<noreason>'] = >>>
 #    include('lib.library/config.msa')
-    if (has_permission('rccmd.ban.ip'), true, die(concat(color(RED), 'You do not have permission.')))
+#    if (has_permission('rccmd.ban.ip'), true, die(concat(color(RED), 'You do not have permission.')))
 #    assign(@ip, $ip)
 #    assign(@reason, $)
 #    if (equals(@player, '<noone>'),
