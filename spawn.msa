@@ -6,7 +6,10 @@
         if (has_permission('rccmd.spawn.other'), true, die(concat(@error_nopermission)))
         true
     )
-    assign(@world, pworld(@player))
+    if (not(equals(@spawn_world, '<null>')),
+        assign(@world, @spawn_world),
+        assign(@world, pworld(@player))
+    )
     assign(@spawn, get_spawn(@world))
     assign(@loc, ploc(player()))
     assign(@x, floor(array_get(@loc,0)))
