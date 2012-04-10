@@ -79,10 +79,10 @@ bind(player_command, null, null, @event,
     assign(@xp, ptexp(@event[player]))
     assign(@xplevel, plevel(@event[player]))
     assign(@mode, pmode(@event[player]))
-    assign(@command, @event[prefix])
+    assign(@command, @event[command])
     include('lib.library/config.msa')
     if (equals(@log_commands, 'true'),
-        console(concat(color(green), '[rccmd] ', color(white), @player, ' used command ', @command, '!')),
+        console(concat(color(green), '[rccmd] ', color(white), @player, ' used command \'', @command, '\'!')),
         true
     )
 )
