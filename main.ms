@@ -6,7 +6,7 @@ if (equals(@rccmd_activated_msg_on_startup, 'true'),
 )
 
 bind(player_join, null, null, @event,
-    if (equals(@motd_on_join, 'true')
+    if (equals(@motd_on_join, 'true'),
         assign(@player, @event[player])
         assign(@x, array_get(ploc(@event[player]), 0))
         assign(@y, array_get(ploc(@event[player]), 1))
