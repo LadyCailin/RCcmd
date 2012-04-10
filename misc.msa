@@ -2,26 +2,26 @@
     /save-all
 <<<
 
-*:/sign [$line='help'] [$='<nothing>'] = >>>
-    if (has_permission('rccmd.sign'), true, die(concat(color(RED), 'You do not have permission.')))
-    assign(@line, $line)
-    assign(@text, $)
-    if (equals(@line, 'help'),
-        call_alias('/help sign'),
-        true
-    )
-    if (equals(@text, '<nothing>'),
-        call_alias('/help sign'),
-        true
-    )
-    ifelse (equals(@line, 1),
-            set_sign_text(pcursor(), @text, array_get(get_sign_text(pcursor()), 1), array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),
-            equals(@line, 2),
-            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), @text, array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),
-            equals(@line, 3),
-            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), array_get(get_sign_text(pcursor()), 1), @text, array_get(get_sign_text(pcursor()), 3)),
-            equals(@line, 4)
-            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), array_get(get_sign_text(pcursor()), 1), array_get(get_sign_text(pcursor()), 2), @text)
-    )
-<<<
+#*:/sign [$line='help'] [$='<nothing>'] = >>>
+#    if (has_permission('rccmd.sign'), true, die(concat(@error_nopermission)))
+#    assign(@line, $line)
+#    assign(@text, $)
+#    if (equals(@line, 'help'),
+#        call_alias('/help sign'),
+#        true
+#    )
+#    if (equals(@text, '<nothing>'),
+#        call_alias('/help sign'),
+#        true
+#    )
+#    ifelse (equals(@line, 1),
+#            set_sign_text(pcursor(), @text, array_get(get_sign_text(pcursor()), 1), array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),
+#            equals(@line, 2),
+#            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), @text, array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),
+#            equals(@line, 3),
+#            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), array_get(get_sign_text(pcursor()), 1), @text, array_get(get_sign_text(pcursor()), 3)),
+#            equals(@line, 4)
+#            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), array_get(get_sign_text(pcursor()), 1), array_get(get_sign_text(pcursor()), 2), @text)
+#    )
+#<<<
 

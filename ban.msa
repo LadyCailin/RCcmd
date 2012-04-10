@@ -1,30 +1,30 @@
 *:/listbans = >>>
-    if (has_permission('rccmd.ban.list'), true, die(concat(color(RED), 'You do not have permission.')))
+    if (has_permission('rccmd.ban.list'), true, die(concat(@error_nopermission)))
     assign(@bans, get_banned_players())
     assign(@bl, 'Banned players: ')
     foreach(@bans, @p,
         assign(@bl, concat(@bl, @p, ' '))
     )
+    include('lib.library/config.msa')
     assign(@ipbans, parse_args(replace(read(@bannedips_file), '\n', ' ')))
     assign(@ipbl, 'Banned IPs: ')
     foreach(@ipbans, @ip,
         assign(@ipbl, concat(@ipbl, @ip, ' '))
     )
-    msg(@ipbl)
-    msg(@bl)
+    msg(concat(@bl, '\n', @ipbl, '\nYou can see reasons for any of these bans by typing /banreason <player|ip>'))
 <<<
 *:/bans = call_alias(/listbans)
 *:/banlist = call_alias(/listbans)
 
 *:/isbanned = /help isbanned
 *:/isbanned $player = >>>
-    if (has_permission('rccmd.ban.check'), true, die(concat(color(RED), 'You do not have permission.')))
+    if (has_permission('rccmd.ban.check'), true, die(concat(@error_nopermission)))
     assign(@player, $player)
     if (pbanned(@player), msg(concat(color(GOLD), @player, color(WHITE), ' is banned.')), msg(concat(color(GOLD), @player, color(WHITE), ' is not banned.')))
 <<<
 
 *:/ban [$player='<noone>'] [$='<noreason>'] = >>>
-    if (has_permission('rccmd.ban'), true, die(concat(color(RED), 'You do not have permission.')))
+    if (has_permission('rccmd.ban'), true, die(concat(@error_nopermission)))
     assign(@player, $player)
     assign(@reason, $)
     if (equals(@player, '<noone>'),
@@ -34,24 +34,47 @@
     if (equals(@reason, '<noreason>'),
         assign(@reason, @default_ban_reason)
     )
+    store_value(concat('banreason.', @player), @reason)
     kick(@player, @reason)
     set_pbanned(@player, true)
-    if (equals(@broadcast_ban, 'true')
+    if (equals(@broadcast_ban, 'true'),
         broadcast(concat(color(GOLD), @player, color(WHITE), ' has been ', color(RED), 'banned ', color(WHITE), 'by ', color(GOLD), player(), color(WHITE), '!\n', color(GOLD), 'Reason: ', color(WHITE), @reason)),
         true
     )
     
 <<<
 
+*:/banip [$ip='<noone>'] [$='<noreason>'] = >>>
+    if (has_permission('rccmd.ban.ip'), true, die(concat(@error_nopermission)))
+    assign(@ip, $ip)
+    assign(@reason, $)
+    if (equals(@player, '<noone>'),
+        die(call_alias('/help banip')),
+        true
+    )
+    if (equals(@reason, '<noreason>'),
+        assign(@reason, @default_ban_reason)
+    )
+    store_value(concat('banreason.', replace(@ip, '.', '_'), @reason)
+    kick(@player, @reason)
+    set_pbanned(@player, true)
+    if (equals(@broadcast_ip_ban, 'true'),
+        broadcast(concat(color(GOLD), @ip, color(WHITE), ' has been ', color(RED), 'banned ', color(WHITE), 'by ', color(GOLD), player(), color(WHITE), '!\n', color(GOLD), 'Reason: ', color(WHITE), @reason)),
+        true
+    )
+    
+<<<
+
 *:/unban [$player='<noone>'] = >>>
-    if (has_permission('rccmd.ban.unban'), true, die(concat(color(RED), 'You do not have permission.')))
+    if (has_permission('rccmd.ban.unban'), true, die(concat(@error_nopermission)))
     assign(@player, $player)
     if (equals(@player, '<noone>'),
         die(call_alias('/help ban')),
         true
     )
     set_pbanned(@player, false)
-    if (equals(@broadcast_unban, 'true')
+    include('lib.library/config.msa')
+    if (equals(@broadcast_unban, 'true'),
         broadcast(concat(color(GOLD), @player, color(WHITE), ' has been ', color(GREEN), 'unbanned ', color(WHITE), 'by ', color(GOLD), player(), color(WHITE), '!')),
         true
     )
@@ -60,3 +83,13 @@
 
 *:/pardon = call_alias(/unban)
 
+*:/banreason [$player='<noone>'] = >>>
+    if (has_permission('rccmd.ban.reason'), true, die(concat(@error_nopermission)))
+    assign(@player, $player)
+    assign(@reason, get_value(concat('banreason.', @player)))
+    if (equals(@player, '<noone>'),
+        die(call_alias('/help banreason')),
+        true
+    )
+    msg(concat(color(GOLD), @player, color(YELLOW), 'was banned for: ', color(GOLD), @reason))
+<<<

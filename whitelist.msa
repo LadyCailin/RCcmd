@@ -3,7 +3,7 @@
 *:/whitelist check = /rules helpwhitelist
 
 *:/whitelist check $player = >>>
-    if (has_permission('rccmd.whitelist.check'), true, die(concat(color(RED), 'You do not have permission.')))
+    if (has_permission('rccmd.whitelist.check'), true, die(concat(@error_nopermission)))
     assign(@player, $player)
     if (pwhitelisted(@player), msg(concat(color(GOLD), @player, color(WHITE), ' is whitelisted.')), msg(concat(color(GOLD), @player, color(WHITE), ' is not whitelisted.')))
 <<<

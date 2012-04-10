@@ -1,25 +1,45 @@
-# rccmd configuration, i'll elaborate on what exactly everything is when i have
-# time, sorry! i hope most of the variables are self explanitory in their names
-# though, but the source is fairly easy to read, so if you don't understand one,
-# just look in the source code. if you've really got problems, just contact me
-# on IRC, which can be found in the README.md
-# i realise some values like servername and maxplayers could be found through get_server_info()
-# but, my version of commandhelper seems to have it bugged. not sure why, though.
+# rccmd's configuration file
+# message variables; these variables can be used in any variable marked with msgvar in the comments
+# @player -- the player's name.
+# @xp -- the experience orbs they dropped
+# @x, @y, @z -- X, Y, and Z coordinates, respectively
+# @server_name -- name of server_name
+# @world -- current world
+# @online -- number of players online
+# @maxplayers -- maximum number of players allowed
+# @time -- current time of current world
+# @xp -- amount of experience orbs the player has
+# @xplevel -- current player's level
+# @mode -- player's mode
 
-assign(@server_name, 'rcfreak0\'s Server') # name of your server. should be self explanatory.
-assign(@max_players, '20')
+# startup-related
+assign(@rccmd_activated_msg_on_startup, 'true') # shows just a nice little message saying that you use rccmd.
 
-assign(@rccmd_activated_msg_on_startup, 'false') # spams for some reason on startup and plugin reload.
+# server-related
+assign(@server_name, 'rcfreak0\'s Server') # name of your server.
+assign(@max_players, '20') # maximum amount of players on yor server.
 
-assign(@death_stats, 'true')
-assign(@death_stats_message, concat('Experience you\'ve lost: ', @xp, ' orbs. -- Sucks, bro.\nCoordinates where you died: ', @x, ', ', @y, ', ', @z, '.\nI\'d get to moving, you only have about 5 minutes left till your items are gone.'))
+# death-related
+assign(@death_stats, 'true') # shows a message with statistics
+assign(@death_stats_message, concat('Experience you\'ve lost: ', @xp, ' orbs. -- Sucks, bro.\nCoordinates where you died: ', @x, ', ', @y, ', ', @z, '.\nI\'d get to moving, you only have about 5 minutes left till your items are gone.')) # msgvar
 
-assign(@welcome_on_join, 'true')
-assign(@motd_on_join, 'true')
-assign(@list_on_join, 'true')
-assign(@motd, concat('Hello §6', @player, '§f, and §6welcome to ', @server_name, '§f!\n§6WWW§f: §2www.rcfreak0.com §f:: §6IRC§f: §2#rcfreak0§f@§2irc.efnet.org'))
+# join-related
+assign(@welcome_on_join, 'true') # show a welcome message to everyone but the player joining.
+assign(@welcome_message, concat('§e', 'Welcome §6', @event[player], '§e to the server!')) # msgvar
+assign(@motd_on_join, 'true') # show the server's motd on join.
+assign(@motd, concat('Hello §6', @player, '§f, and §6welcome to ', @server_name, '§f!\n§6WWW§f: §2www.rcfreak0.com §f:: §6IRC§f: §2#rcfreak0§f@§2irc.efnet.org')) # msgvar
+assign(@list_on_join, 'true') # execute the /list command after the motd is shown.
 
+# ban-related
 assign(@default_ban_reason, 'You have been banned. Appeal your ban on the IRC channel, if you so wish to.')
 assign(@bannedips_file, '../../../../banned-ips.txt')
+assign(@broadcast_ban, 'true')
+assign(@broadcast_unban, 'true')
 
 assign(@spawn_warmup, 5)
+
+# error-related
+assign(@error_nopermission, concat(color(RED), 'You do not have permission.')) # message shown on not having permission for a command
+
+# logging-related
+assign(@log_commands, 'true') # whether to log commands used by players in the console or not
