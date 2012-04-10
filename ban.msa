@@ -11,7 +11,7 @@
     foreach(@ipbans, @ip,
         assign(@ipbl, concat(@ipbl, @ip, ' '))
     )
-    msg(concat(@bl, '\n', @ipbl, '\nYou can see reasons for any of these bans by typing /banreason <player|ip>'))
+    msg(concat(@bl, '\n', @ipbl, '\nYou can see reasons for any of these bans by typing /banreason <player>'))
 <<<
 *:/bans = call_alias(/listbans)
 *:/banlist = call_alias(/listbans)
@@ -44,26 +44,26 @@
     
 <<<
 
-*:/banip [$ip='<noone>'] [$='<noreason>'] = >>>
-    if (has_permission('rccmd.ban.ip'), true, die(concat(@error_nopermission)))
-    assign(@ip, $ip)
-    assign(@reason, $)
-    if (equals(@player, '<noone>'),
-        die(call_alias('/help banip')),
-        true
-    )
-    if (equals(@reason, '<noreason>'),
-        assign(@reason, @default_ban_reason)
-    )
-    store_value(concat('banreason.', replace(@ip, '.', '_'), @reason)
-    kick(@player, @reason)
-    set_pbanned(@player, true)
-    if (equals(@broadcast_ip_ban, 'true'),
-        broadcast(concat(color(GOLD), @ip, color(WHITE), ' has been ', color(RED), 'banned ', color(WHITE), 'by ', color(GOLD), player(), color(WHITE), '!\n', color(GOLD), 'Reason: ', color(WHITE), @reason)),
-        true
-    )
-    
-<<<
+#*:/banip [$ip='<noone>'] [$='<noreason>'] = >>>
+#    if (has_permission('rccmd.ban.ip'), true, die(concat(@error_nopermission)))
+#    assign(@ip, $ip)
+#    assign(@reason, $)
+#    if (equals(@player, '<noone>'),
+#        die(call_alias('/help banip')),
+#        true
+#    )
+#    if (equals(@reason, '<noreason>'),
+#        assign(@reason, @default_ban_reason)
+#    )
+#    store_value(concat('banreason.', replace(@ip, '.', '_'), @reason)
+#    kick(@player, @reason)
+#    set_pbanned(@player, true)
+#    if (equals(@broadcast_ip_ban, 'true'),
+#        broadcast(concat(color(GOLD), @ip, color(WHITE), ' has been ', color(RED), 'banned ', color(WHITE), 'by ', color(GOLD), player(), color(WHITE), '!\n', color(GOLD), 'Reason: ', color(WHITE), @reason)),
+#        true
+#    )
+#    
+#<<<
 
 *:/unban [$player='<noone>'] = >>>
     if (has_permission('rccmd.ban.unban'), true, die(concat(@error_nopermission)))

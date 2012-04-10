@@ -25,7 +25,7 @@ assign(@death_stats_message, concat('Experience you\'ve lost: ', @xp, ' orbs. --
 
 # join-related
 assign(@welcome_on_join, 'true') # show a welcome message to everyone but the player joining.
-assign(@welcome_message, concat('§e', 'Welcome §6', @event[player], '§e to the server!')) # msgvar
+assign(@welcome_message, concat('§e', 'Welcome §6', @player, '§e to the server!')) # msgvar
 assign(@motd_on_join, 'true') # show the server's motd on join.
 assign(@motd, concat('Hello §6', @player, '§f, and §6welcome to ', @server_name, '§f!\n§6WWW§f: §2www.rcfreak0.com §f:: §6IRC§f: §2#rcfreak0§f@§2irc.efnet.org')) # msgvar
 assign(@list_on_join, 'true') # execute the /list command after the motd is shown.
