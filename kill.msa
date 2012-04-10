@@ -1,9 +1,11 @@
 *:/kill = >>>
-    if (has_permission('rccmd.kill'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.kill'), true, die(concat(color(RED), 'You do not have permission.')))
     msg(concat(color(RED), 'Are you sure you really want to do this...?\n', color(GOLD), 'Type /killmepleaseohgodplease if you really want to suicide...'))
 <<<
 
 *:/killmepleaseohgodplease = >>>
-    if (has_permission('rccmd.kill'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.kill'), true, die(concat(color(RED), 'You do not have permission.')))
     kill(player())
 <<<

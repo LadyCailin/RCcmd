@@ -1,5 +1,6 @@
 *:/list [$=''] = >>>
-    if (has_permission('rccmd.list'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.list'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@players, all_players())
     assign(@formatplayers, replace(@players, '{', ''))
     assign(@formatplayers, replace(@formatplayers, '}', ''))

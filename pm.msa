@@ -1,5 +1,6 @@
 *:/msg [$user='...nouser...'] [$message='...nomessage...'] = >>>
-    if (has_permission('rccmd.pm'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.pm'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@user, $user)
     assign(@message, $message)
     if (equals(@user, '...nouser...'), die(run('/rules helppm')), true)
@@ -17,7 +18,8 @@
 
 *:/r = run('/rules helppm')
 *:/r $ = >>>
-    if (has_permission('rccmd.pm'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.pm'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@message, $)
     chat(concat('@@', @message))
 <<<

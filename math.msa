@@ -1,5 +1,6 @@
 *:/calc [$=''] = >>>
-    if (has_permission('rccmd.calc'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.calc'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@dog, $)
     msg(concat(color(GOLD), @dog, color(WHITE), ' = ', color(GREEN), round(expr(@dog))))
 <<<

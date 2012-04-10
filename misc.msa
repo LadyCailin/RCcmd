@@ -3,7 +3,8 @@
 <<<
 
 #*:/sign [$line='help'] [$='<nothing>'] = >>>
-#    if (has_permission('rccmd.sign'), true, die(concat(@error_nopermission)))
+#    include('lib.library/config.msa')
+    if (has_permission('rccmd.sign'), true, die(concat(color(RED), 'You do not have permission.')))
 #    assign(@line, $line)
 #    assign(@text, $)
 #    if (equals(@line, 'help'),

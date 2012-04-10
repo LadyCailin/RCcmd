@@ -1,5 +1,6 @@
 *:/getpos = >>>
-    if (has_permission('rccmd.getpos'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.getpos'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@loc, ploc(player()))
     assign(@x, floor(array_get(@loc,0)))
     assign(@y, floor(array_get(@loc,1)))
@@ -9,7 +10,8 @@
 <<<
 
 *:/getpos $player = >>>
-    if (has_permission('rccmd.getpos.other'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.getpos.other'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@player, $player)
     assign(@loc, ploc(@player))
     assign(@x, floor(array_get(@loc,0)))

@@ -1,5 +1,6 @@
 *:/listbans = >>>
-    if (has_permission('rccmd.ban.list'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.ban.list'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@bans, get_banned_players())
     assign(@bl, 'Banned players: ')
     foreach(@bans, @p,
@@ -18,13 +19,15 @@
 
 *:/isbanned = /help isbanned
 *:/isbanned $player = >>>
-    if (has_permission('rccmd.ban.check'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.ban.check'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@player, $player)
     if (pbanned(@player), msg(concat(color(GOLD), @player, color(WHITE), ' is banned.')), msg(concat(color(GOLD), @player, color(WHITE), ' is not banned.')))
 <<<
 
 *:/ban [$player='<noone>'] [$='<noreason>'] = >>>
-    if (has_permission('rccmd.ban'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.ban'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@player, $player)
     assign(@reason, $)
     if (equals(@player, '<noone>'),
@@ -45,7 +48,8 @@
 <<<
 
 #*:/banip [$ip='<noone>'] [$='<noreason>'] = >>>
-#    if (has_permission('rccmd.ban.ip'), true, die(concat(@error_nopermission)))
+#    include('lib.library/config.msa')
+    if (has_permission('rccmd.ban.ip'), true, die(concat(color(RED), 'You do not have permission.')))
 #    assign(@ip, $ip)
 #    assign(@reason, $)
 #    if (equals(@player, '<noone>'),
@@ -66,7 +70,8 @@
 #<<<
 
 *:/unban [$player='<noone>'] = >>>
-    if (has_permission('rccmd.ban.unban'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.ban.unban'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@player, $player)
     if (equals(@player, '<noone>'),
         die(call_alias('/help ban')),
@@ -84,7 +89,8 @@
 *:/pardon = call_alias(/unban)
 
 *:/banreason [$player='<noone>'] = >>>
-    if (has_permission('rccmd.ban.reason'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.ban.reason'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@player, $player)
     assign(@reason, get_value(concat('banreason.', @player)))
     if (equals(@player, '<noone>'),

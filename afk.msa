@@ -1,5 +1,6 @@
 *:/afk [$=''] = >>>
-    if (has_permission('rccmd.afk'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.afk'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@key, 'afk')
     if(or(equals(get_value(@key), null), equals(get_value(@key), '')),
         g(
@@ -31,7 +32,8 @@
 <<<
 
 *:/listafk [$=''] = >>>
-    if (has_permission('rccmd.list.afk'), true, die(concat(@error_nopermission)))
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.list.afk'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@key, 'afk')
     if(or(equals(get_value(@key), null), equals(get_value(@key), '')), msg('No one is AFK.'),
         g(
