@@ -1,0 +1,24 @@
+*:/lockdown [$message='<null>'] = >>>
+    include('lib.library/config.msa')
+    if (has_permission('rccmd.lockdown'), true, die(concat(color(RED), 'You do not have permission.')))
+    assign(@message, $message)
+    if (equals(@message, '<null>'),
+        assign(@message, @lockdown_message),
+        true
+    )
+    if (not(has_value('lockdown.active')),
+        store_value('lockdown.message', @message)
+        store_value('lockdown.active', 'true')
+        foreach(all_players(), @pl,
+            if (not(array_contains(pgroup(@pl), @group_bypass)),
+                kick(@pl, @message),
+                tmsg(@pl, concat(color(GREEN), 'You have been exempt from being kicked from lockdown.'))
+            )
+        )
+        broadcast(concat(color(GOLD), 'The server has now been put into ', color(GREEN), 'lockdown.')),
+        clear_value('lockdown.message')
+        clear_value('lockdown.active')
+        broadcast(concat(color(GOLD), 'The server is no longer in ', color(GREEN), 'lockdown.'))
+    )
+    
+<<<
