@@ -44,4 +44,4 @@ assign(@log_commands, 'true') # whether to log commands used by players in the c
 
 # lockdown-related
 assign(@group_bypass, 'Admins') # permissions group allowed to bypass lockdown kicking them
-assign(@lockdown_message, 'The server has been put into lockdown mode.\mPlease join us on IRC (#rcfreak0@irc.efnet.org) if you have any questions.')
+assign(@lockdown_message, 'The server has been put into lockdown mode.\nPlease join us on IRC (#rcfreak0@irc.efnet.org) if you have any questions.')
