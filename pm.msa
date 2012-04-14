@@ -8,15 +8,15 @@
         true
     )
     if (not(ponline(@user)),
-        die(color(GOLD), @user, ' ', color(RED), 'is not online!'),
+        die(concat(color(GOLD), @user, ' ', color(RED), 'is not online!')),
         true
     )
     if (equals(@message, '...nomessage...'),
-        die(color(RED), 'You must pass a <message> to the command.'),
+        die(concat(color(RED), 'You must pass a <message> to the command.')),
         true
     )
-    msg(color(PINK), 'Message to ', color(RED), @player, color(PINK), ': ', color(WHITE), @message)
-    tmsg(color(PINK), 'Message from ', color(RED), player(), color(PINK), ': ', color(WHITE), @message)
+    msg(color(PINK), 'Message to ', color(RED), @user, color(PINK), ': ', color(WHITE), @message)
+    tmsg(@user, concat(color(PINK), 'Message from ', color(RED), player(), color(PINK), ': ', color(WHITE), @message))
 <<<
 
 *:/tell [$=''] = >>>
