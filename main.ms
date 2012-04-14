@@ -6,18 +6,22 @@ if (equals(@rccmd_activated_msg_on_startup, 'true'),
 )
 
 bind(player_join, null, null, @event,
+    assign(@player, @event[player])
+    assign(@x, array_get(ploc(@event[player]), 0))
+    assign(@y, array_get(ploc(@event[player]), 1))
+    assign(@z, array_get(ploc(@event[player]), 2))
+    assign(@world, pworld(@player))
+    assign(@online, array_size(all_players()))
+    assign(@time, pworld(@event[player]))
+    assign(@xp, ptexp(@event[player]))
+    assign(@xplevel, plevel(@event[player]))
+    assign(@mode, pmode(@event[player]))
+    include('lib.library/config.msa')
+    if (has_value('lockdown.active'),
+        kick(@player, get_value('lockdown.message')),
+        true
+    )
     if (equals(@motd_on_join, 'true'),
-        assign(@player, @event[player])
-        assign(@x, array_get(ploc(@event[player]), 0))
-        assign(@y, array_get(ploc(@event[player]), 1))
-        assign(@z, array_get(ploc(@event[player]), 2))
-        assign(@world, pworld(@player))
-        assign(@online, array_size(all_players()))
-        assign(@time, pworld(@event[player]))
-        assign(@xp, ptexp(@event[player]))
-        assign(@xplevel, plevel(@event[player]))
-        assign(@mode, pmode(@event[player]))
-        include('lib.library/config.msa')
         tmsg(@event[player], concat(@motd)),
         true
     )
@@ -26,17 +30,6 @@ bind(player_join, null, null, @event,
         true
     )
     if (equals(@welcome_on_join, 'true'),
-        assign(@player, @event[player])
-        assign(@x, array_get(ploc(@event[player]), 0))
-        assign(@y, array_get(ploc(@event[player]), 1))
-        assign(@z, array_get(ploc(@event[player]), 2))
-        assign(@world, pworld(@player))
-        assign(@online, array_size(all_players()))
-        assign(@time, pworld(@event[player]))
-        assign(@xp, ptexp(@event[player]))
-        assign(@xplevel, plevel(@event[player]))
-        assign(@mode, pmode(@event[player]))
-        include('lib.library/config.msa')
         if (has_value(concat(@event[player], '.welcome')),
             true,
             foreach(all_players(), @pl,
@@ -86,3 +79,5 @@ bind(player_death, null, null, @event,
 #        true
 #    )
 #)
+
+

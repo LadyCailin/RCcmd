@@ -14,12 +14,11 @@
     assign(@y, floor(array_get(@loc,1)))
     assign(@z, floor(array_get(@loc,2)))
     include('lib.library/config.msa')
-    if (not(equals(@spawn_world, '<null>')),
-        assign(@world, @spawn_world),
-        assign(@world, pworld(@player))
+    if (equals(@spawn_world, '<null>'),
+        assign(@world, pworld(@player)),
+        assign(@world, @spawn_world)
     )
     msg(concat(color(GOLD), 'You might want to remember your coordinates: ', color(RED), @x, ', ', @y, ', ', @z, ' in \'', pworld(), '\'.'))
-    
     if (not(equals(@spawn_warmup, 0)),
         msg(concat(color(GRAY), 'Teleporting you to spawn in ', @spawn_warmup, ' seconds...'))
         set_timeout(multiply(@spawn_warmup, 1000), closure(set_ploc(@player, @spawn))),

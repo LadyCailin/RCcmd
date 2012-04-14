@@ -3,9 +3,20 @@
     if (has_permission('rccmd.pm'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@user, $user)
     assign(@message, $message)
-    if (equals(@user, '...nouser...'), die(run('/rules helppm')), true)
-    if (equals(@message, '...nomessage...'), die(run('/rules helppm')), true)
-    chat(concat('@', @user, ' ', @message))
+    if (equals(@user, '...nouser...'),
+        die(run('/rules helppm')),
+        true
+    )
+    if (not(ponline(@user)),
+        die(color(GOLD), @user, ' ', color(RED), 'is not online!'),
+        true
+    )
+    if (equals(@message, '...nomessage...'),
+        die(color(RED), 'You must pass a <message> to the command.'),
+        true
+    )
+    msg(color(PINK), 'Message to ', color(RED), @player, color(PINK), ': ', color(WHITE), @message)
+    tmsg(color(PINK), 'Message from ', color(RED), player(), color(PINK), ': ', color(WHITE), @message)
 <<<
 
 *:/tell [$=''] = >>>
@@ -14,12 +25,4 @@
 
 *:/pm [$=''] = >>>
     call_alias(concat('/msg ', $))
-<<<
-
-*:/r = run('/rules helppm')
-*:/r $ = >>>
-    include('lib.library/config.msa')
-    if (has_permission('rccmd.pm'), true, die(concat(color(RED), 'You do not have permission.')))
-    assign(@message, $)
-    chat(concat('@@', @message))
 <<<

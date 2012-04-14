@@ -25,7 +25,7 @@ assign(@death_stats_message, concat('Experience you\'ve lost: ', @xp, ' orbs. --
 
 # join-related
 assign(@welcome_on_join, 'true') # show a welcome message to everyone but the player joining.
-assign(@welcome_message, concat('§e', 'Welcome §6', @player, '§e to the server!')) # msgvar
+assign(@welcome_message, concat('§eWelcome §6', @player, '§e to the server!')) # msgvar
 assign(@motd_on_join, 'true') # show the server's motd on join.
 assign(@motd, concat('Hello §6', @player, '§f, and §6welcome to ', @server_name, '§f!\n§6WWW§f: §2www.rcfreak0.com §f:: §6IRC§f: §2#rcfreak0§f@§2irc.efnet.org')) # msgvar
 assign(@list_on_join, 'true') # execute the /list command after the motd is shown.
@@ -37,7 +37,11 @@ assign(@broadcast_ban, 'true')
 assign(@broadcast_unban, 'true')
 
 assign(@spawn_warmup, 5)
-assign(@spawn_world, 'world') # on my server, i want /spawn to send you to @spawn_world's spawn, whatever world you are on. set this to <null> if you want /spawn to send you to the player's current world's spawn
+assign(@spawn_world, '<null>') # on my server, i want /spawn to send you to @spawn_world's spawn, whatever world you are on. set this to <null> if you want /spawn to send you to the player's current world's spawn
 
 # logging-related
 assign(@log_commands, 'true') # whether to log commands used by players in the console or not
+
+# lockdown-related
+assign(@group_bypass, 'Admins') # permissions group allowed to bypass lockdown kicking them
+assign(@lockdown_message, 'The server has been put into lockdown mode.\mPlease join us on IRC (#rcfreak0@irc.efnet.org) if you have any questions.')
