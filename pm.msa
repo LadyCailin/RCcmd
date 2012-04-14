@@ -1,8 +1,8 @@
-*:/msg [$user='...nouser...'] [$message='...nomessage...'] = >>>
+*:/msg [$user='...nouser...'] [$='...nomessage...'] = >>>
     include('lib.library/config.msa')
     if (has_permission('rccmd.pm'), true, die(concat(color(RED), 'You do not have permission.')))
     assign(@user, $user)
-    assign(@message, $message)
+    assign(@message, $)
     if (equals(@user, '...nouser...'),
         die(run('/rules helppm')),
         true
@@ -15,7 +15,7 @@
         die(concat(color(RED), 'You must pass a <message> to the command.')),
         true
     )
-    msg(color(PINK), 'Message to ', color(RED), @user, color(PINK), ': ', color(WHITE), @message)
+    msg(concat(color(PINK), 'Message to ', color(RED), @user, color(PINK), ': ', color(WHITE), @message))
     tmsg(@user, concat(color(PINK), 'Message from ', color(RED), player(), color(PINK), ': ', color(WHITE), @message))
 <<<
 
