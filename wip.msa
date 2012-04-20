@@ -1,6 +1,6 @@
 #*:/waypoint [$action='help'] [$name='none'] [$coords='none'] = >>>
-#    include('lib.library/config.msa')
-#    if (has_permission('rccmd.waypoint'), true, die(concat(color(RED), 'You do not have permission.')))
+#    _loadconfig()
+#    _checkforperm('waypoint')
 #    assign(@action, $action)
 #    assign(@name, $name)
 #    assign(@player, player())
@@ -8,10 +8,10 @@
 #    ifelse (equals(@action, 'help'),
 #        run('/rules helpwaypoint'),
 #        equals(@action, 'add'),
-#        if (equals(@name, 'none')
+#        if(equals(@name, 'none')
 #            
 #        )
-#        if (equals(@coords, 'none'),
+#        if(equals(@coords, 'none'),
 #            die(run('/rules helpwaypoint')),
 #            assign(@coords, reg_split(',', @coords))
 #            assign(@x, array_get(@coords, 0))

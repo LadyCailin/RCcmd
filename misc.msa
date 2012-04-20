@@ -3,19 +3,19 @@
 <<<
 
 #*:/sign [$line='help'] [$='<nothing>'] = >>>
-#    include('lib.library/config.msa')
-#    if (has_permission('rccmd.sign'), true, die(concat(color(RED), 'You do not have permission.')))
+#    _loadconfig()
+#    _checkforperm('sign')
 #    assign(@line, $line)
 #    assign(@text, $)
-#    if (equals(@line, 'help'),
+#    if(@line, 'help'),
 #        call_alias('/help sign'),
 #        true
 #    )
-#    if (equals(@text, '<nothing>'),
+#    if(@text, '<nothing>'),
 #        call_alias('/help sign'),
 #        true
 #    )
-#    ifelse (equals(@line, 1),
+#    ifelse(@line, 1),
 #            set_sign_text(pcursor(), @text, array_get(get_sign_text(pcursor()), 1), array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),
 #            equals(@line, 2),
 #            set_sign_text(pcursor(), array_get(get_sign_text(pcursor()), 0), @text, array_get(get_sign_text(pcursor()), 2), array_get(get_sign_text(pcursor()), 3)),

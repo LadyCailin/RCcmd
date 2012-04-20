@@ -1,11 +1,11 @@
 *:/spawn [$player='<me>'] = >>>
-    include('lib.library/config.msa')
-    if (has_permission('rccmd.spawn'), true, die(concat(color(RED), 'You do not have permission.')))
+    _loadconfig()
+    _checkforperm('spawn')
     assign(@player, $player)
-    if (equals(@player, '<me>'),
+    if(equals(@player, '<me>'),
         assign(@player, player()),
-        include('lib.library/config.msa')
-    if (has_permission('rccmd.spawn.other'), true, die(concat(color(RED), 'You do not have permission.')))
+        _loadconfig()
+    _checkforperm('spawn.other')
         true
     )
     assign(@spawn, get_spawn(@world))
@@ -13,13 +13,13 @@
     assign(@x, floor(array_get(@loc,0)))
     assign(@y, floor(array_get(@loc,1)))
     assign(@z, floor(array_get(@loc,2)))
-    include('lib.library/config.msa')
-    if (equals(@spawn_world, '<null>'),
+    _loadconfig()
+    if(equals(@spawn_world, '<null>'),
         assign(@world, pworld(@player)),
         assign(@world, @spawn_world)
     )
     msg(concat(color(GOLD), 'You might want to remember your coordinates: ', color(RED), @x, ', ', @y, ', ', @z, ' in \'', pworld(), '\'.'))
-    if (not(equals(@spawn_warmup, 0)),
+    if(not(equals(@spawn_warmup, 0)),
         msg(concat(color(GRAY), 'Teleporting you to spawn in ', @spawn_warmup, ' seconds...'))
         set_timeout(multiply(@spawn_warmup, 1000), closure(set_ploc(@player, @spawn))),
         msg(concat(color(GRAY), 'Teleporting you to spawn...'))

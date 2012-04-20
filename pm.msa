@@ -1,17 +1,17 @@
 *:/msg [$user='...nouser...'] [$='...nomessage...'] = >>>
-    include('lib.library/config.msa')
-    if (has_permission('rccmd.pm'), true, die(concat(color(RED), 'You do not have permission.')))
+    _loadconfig()
+    _checkforperm('pm')
     assign(@user, $user)
     assign(@message, $)
-    if (equals(@user, '...nouser...'),
+    if(equals(@user, '...nouser...'),
         die(run('/rules helppm')),
         true
     )
-    if (not(ponline(@user)),
+    if(not(ponline(@user)),
         die(concat(color(GOLD), @user, ' ', color(RED), 'is not online!')),
         true
     )
-    if (equals(@message, '...nomessage...'),
+    if(equals(@message, '...nomessage...'),
         die(concat(color(RED), 'You must pass a <message> to the command.')),
         true
     )

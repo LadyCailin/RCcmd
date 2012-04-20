@@ -3,9 +3,9 @@
 *:/whitelist check = /rules helpwhitelist
 
 *:/whitelist check $player = >>>
-    include('lib.library/config.msa')
-    if (has_permission('rccmd.whitelist.check'), true, die(concat(color(RED), 'You do not have permission.')))
+    _loadconfig()
+    _checkforperm('whitelist.check')
     assign(@player, $player)
-    if (pwhitelisted(@player), msg(concat(color(GOLD), @player, color(WHITE), ' is whitelisted.')), msg(concat(color(GOLD), @player, color(WHITE), ' is not whitelisted.')))
+    if(pwhitelisted(@player), msg(concat(color(GOLD), @player, color(WHITE), ' is whitelisted.')), msg(concat(color(GOLD), @player, color(WHITE), ' is not whitelisted.')))
 <<<
 

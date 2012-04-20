@@ -1,8 +1,8 @@
 *:/spawnmob [$mob='list'] [$amount='1'] [$location='myloc'] = >>>
-    include('lib.library/config.msa')
-    if (has_permission('rccmd.spawnmob'), true, die(concat(color(RED), 'You do not have permission.')))
+    _loadconfig()
+    _checkforperm('spawnmob')
     assign(@mob, $mob)
-    if (equals(@mob, 'list'), die(concat(color(GOLD), 'List of mobs: ', color(WHITE), 'Blaze, CaveSpider, Chicken, Cow, Creeper, Enderdragon, Enderman, Ghast, IronGolem, MagmaCube, Mooshroom, Ocelot, Pig, PigZombie, Sheep, Silverfish, Skeleton, Slime, Spider, SpiderJockey, Squid, Villager, Wolf, Zombie.\n', color(GOLD), 'Maximum spawn limit is 50.')), true)
+    if(equals(@mob, 'list'), die(concat(color(GOLD), 'List of mobs: ', color(WHITE), 'Blaze, CaveSpider, Chicken, Cow, Creeper, Enderdragon, Enderman, Ghast, IronGolem, MagmaCube, Mooshroom, Ocelot, Pig, PigZombie, Sheep, Silverfish, Skeleton, Slime, Spider, SpiderJockey, Squid, Villager, Wolf, Zombie.\n', color(GOLD), 'Maximum spawn limit is 50.')), true)
     assign(@amount, $amount)
     assign(@player, player())
     assign(@location, pcursor(@player))

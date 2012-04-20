@@ -1,27 +1,26 @@
 *:/time [$time=none] [$world='<current>'] = >>>
-    include('lib.library/config.msa')
-    if (has_permission('rccmd.time'), true, die(concat(color(RED), 'You do not have permission.')))
+    _loadconfig()
+    _checkforperm('time')
     assign(@time, $time)
     assign(@world, $world)
-    #if (equals(@time, none), run('/rules helptime'), die())
-    if (equals(@world, '<current>'), assign(@world, pworld(player())))
+    #if(equals(@time, none), run('/rules helptime'), die())
+    if(equals(@world, '<current>'), assign(@world, pworld(player())))
     ifelse (equals(@time, 'none'), run('/rules helptime'),
             equals(@time, 'current'), msg(concat(color(GOLD), 'Current time in ', @world, ': ', color(WHITE), get_world_time(@world))),
-            equals(@time, 'day'), set_world_time(@world, 6000),
             equals(@time, 'dawn'), set_world_time(@world, 0),
-            equals(@time, 'afternoon'), set_world_time(@world, 12000),
+            equals(@time, 'day'), set_world_time(@world, 6000),
             equals(@time, 'dusk'), set_world_time(@world, 12000),
-            equals(@time, 'night'), set_world_time(@world, 12000),
+            equals(@time, 'night'), set_world_time(@world, 18000),
             equals(@time, 'help'), run('/rules helptime')
      )
 <<<
 
 *:/weather [$set='help'] [$world='<current>'] = >>>
-    include('lib.library/config.msa')
-    if (has_permission('rccmd.weather'), true, die(concat(color(RED), 'You do not have permission.')))
+    _loadconfig()
+    _checkforperm('weather')
     assign(@world, $world)
     assign(@set, $set)
-    if (equals(@world, '<current>'), assign(@world, pworld(player())))
+    if(equals(@world, '<current>'), assign(@world, pworld(player())))
     ifelse (equals(@set, 'off'), 
             storm(false, @world)
             try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true)

@@ -1,9 +1,9 @@
 *:/gamemode [$player='<myself>'] = >>>
-    include('lib.library/config.msa')
-    if (has_permission('rccmd.gamemode'), true, die(concat(color(RED), 'You do not have permission.')))
+    _loadconfig()
+    _checkforperm('gamemode')
     assign(@player, $player)
-    if (equals(@player, '<myself>'), assign(@player, player()), true)
-    if (equals(pmode(@player), 'CREATIVE'), set_pmode(@player, SURVIVAL), set_pmode(@player, CREATIVE))
+    if(equals(@player, '<myself>'), assign(@player, player()), true)
+    if(equals(pmode(@player), 'CREATIVE'), set_pmode(@player, SURVIVAL), set_pmode(@player, CREATIVE))
 <<<
 
 *:/gm [$=''] = >>>
