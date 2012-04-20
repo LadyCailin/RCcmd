@@ -1,8 +1,13 @@
+proc(_loadconfig,
+    include('lib.library/config.msa')
+)
+
 ##===============================================================================
 ##
 ##   Sample external MethodScript include
 ##
 ##===============================================================================
+
 
 ##Returns the distance between two blocks, or any other 3d points, for that matter
 #proc(_3d_distance, @arr1, @arr2,
@@ -46,6 +51,7 @@ proc(_checkforperm, @perm,
 )
 
 proc(_bc, @message,
+    _loadconfig()
     if(equals(to_lower(@irc), 'true'),
         true,
         assign(@broadcast_to_irc, 'false')
@@ -55,7 +61,7 @@ proc(_bc, @message,
         true
     )
     if(equals(to_lower(@broadcast_to_console), 'true'),
-        console(@message, false),
+        _consolereport(@message),
         true
     )
     if(equals(to_lower(@broadcast_to_irc), 'true'),
@@ -71,6 +77,4 @@ proc(_bc, @message,
     )
 )
 
-proc(_loadconfig,
-    include('lib.library/config.msa')
-)
+
