@@ -1,5 +1,5 @@
 *:/time [$time=none] [$world='<current>'] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('time')
     assign(@time, $time)
     assign(@world, $world)
@@ -16,7 +16,7 @@
 <<<
 
 *:/weather [$set='help'] [$world='<current>'] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('weather')
     assign(@world, $world)
     assign(@set, $set)

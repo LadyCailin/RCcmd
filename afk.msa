@@ -1,5 +1,5 @@
 *:/afk [$=''] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('afk')
     assign(@key, 'afk')
     if(or(equals(get_value(@key), null), equals(get_value(@key), '')),
@@ -32,7 +32,7 @@
 <<<
 
 *:/listafk [$=''] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('list.afk')
     assign(@key, 'afk')
     if(or(equals(get_value(@key), null), equals(get_value(@key), '')), msg('No one is AFK.'),

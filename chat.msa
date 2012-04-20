@@ -1,6 +1,6 @@
 # 'clears' the chat window
 *:/clear = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('chat.clear')
     msg('')
     msg('')

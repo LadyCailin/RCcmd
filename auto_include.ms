@@ -1,7 +1,3 @@
-proc(_loadconfig,
-    include('lib.library/config.msa')
-)
-
 ##===============================================================================
 ##
 ##   Sample external MethodScript include
@@ -51,7 +47,7 @@ proc(_checkforperm, @perm,
 )
 
 proc(_bc, @message,
-    _loadconfig()
+    include('lib.library/config.msa')
     if(equals(to_lower(@irc), 'true'),
         true,
         assign(@broadcast_to_irc, 'false')

@@ -1,5 +1,5 @@
 *:/gamemode [$player='<myself>'] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('gamemode')
     assign(@player, $player)
     if(equals(@player, '<myself>'), assign(@player, player()), true)

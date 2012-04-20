@@ -1,5 +1,5 @@
 #*:/lockdown [$message='<null>'] = >>>
-#    _loadconfig()
+#    include('lib.library/config.msa')
 #    _checkforperm('lockdown')
 #    assign(@message, $message)
 #    if(equals(@message, '<null>'),

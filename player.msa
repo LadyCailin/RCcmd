@@ -1,5 +1,5 @@
 *:/list [$=''] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('list')
     assign(@players, all_players())
     assign(@formatplayers, replace(@players, '{', ''))

@@ -1,6 +1,5 @@
-include('auto_include.ms')
-_loadconfig()
 
+include('lib.library/config.msa')
 if(equals(@rccmd_activated_msg_on_startup, 'true'),
     console(concat('§2[rccmd]§f rccmd created by Hunterm <hunterm.haxxr@gmail.com> activated!'), false),
     true
@@ -17,7 +16,7 @@ bind(player_join, null, null, @event,
     assign(@xp, ptexp(@event[player]))
     assign(@xplevel, plevel(@event[player]))
     assign(@mode, pmode(@event[player]))
-    _loadconfig()
+    include('lib.library/config.msa')
     if(equals(@motd_on_join, 'true'),
         tmsg(@event[player], concat(@motd)),
         true
@@ -35,8 +34,8 @@ bind(player_join, null, null, @event,
                 )
             )
             store_value(concat(@event[player], '.welcome'), 'true')
+        ),
         true
-        ), true
     )
 )
 
@@ -51,7 +50,7 @@ bind(player_death, null, null, @event,
     assign(@xp, @event[xp])
     assign(@xplevel, plevel(@event[player]))
     assign(@mode, pmode(@event[player]))
-    _loadconfig()
+    include('lib.library/config.msa')
     if(equals(@death_stats, 'true'),
         tmsg(@event[player], @death_stats_message),
         true
@@ -70,7 +69,7 @@ bind(player_death, null, null, @event,
 #    assign(@xplevel, plevel(@event[player]))
 #    assign(@mode, pmode(@event[player]))
 #    assign(@command, @event[command])
-#    _loadconfig()
+#    include('lib.library/config.msa')
 #    if(equals(@log_commands, 'true'),
 #        console(concat(color(green), '[rccmd] ', color(white), @player, ' used command \'', @command, '\'!')),
 #        true

@@ -1,11 +1,11 @@
 *:/kill = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('kill')
     msg(concat(color(RED), 'Are you sure you really want to do this...?\n', color(GOLD), 'Type /killmepleaseohgodplease if you really want to suicide...'))
 <<<
 
 *:/killmepleaseohgodplease = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('kill')
     kill(player())
 <<<

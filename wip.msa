@@ -1,5 +1,5 @@
 #*:/waypoint [$action='help'] [$name='none'] [$coords='none'] = >>>
-#    _loadconfig()
+#    include('lib.library/config.msa')
 #    _checkforperm('waypoint')
 #    assign(@action, $action)
 #    assign(@name, $name)

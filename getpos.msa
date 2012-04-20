@@ -1,5 +1,5 @@
 *:/getpos = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('getpos')
     assign(@loc, ploc(player()))
     assign(@x, floor(array_get(@loc,0)))
@@ -10,7 +10,7 @@
 <<<
 
 *:/getpos $player = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('getpos.other')
     assign(@player, $player)
     assign(@loc, ploc(@player))

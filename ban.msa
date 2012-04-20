@@ -1,12 +1,12 @@
 *:/listbans = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('ban.list')
     assign(@bans, get_banned_players())
     assign(@bl, 'Banned players: ')
     foreach(@bans, @p,
         assign(@bl, concat(@bl, @p, ' '))
     )
-    _loadconfig()
+    include('lib.library/config.msa')
     assign(@ipbans, parse_args(replace(read(@bannedips_file), '\n', ' ')))
     assign(@ipbl, 'Banned IPs: ')
     foreach(@ipbans, @ip,
@@ -19,14 +19,14 @@
 
 *:/isbanned = /help isbanned
 *:/isbanned $player = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('ban.check')
     assign(@player, $player)
     if(pbanned(@player), msg(concat(color(GOLD), @player, color(WHITE), ' is banned.')), msg(concat(color(GOLD), @player, color(WHITE), ' is not banned.')))
 <<<
 
 *:/ban [$player='<noone>'] [$='<noreason>'] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('ban')
     assign(@player, $player)
     assign(@reason, $)
@@ -48,7 +48,7 @@
 <<<
 
 #*:/banip [$ip='<noone>'] [$='<noreason>'] = >>>
-#    _loadconfig()
+#    include('lib.library/config.msa')
 #    _checkforperm('ban.ip')
 #    assign(@ip, $ip)
 #    assign(@reason, $)
@@ -70,7 +70,7 @@
 #<<<
 
 *:/unban [$player='<noone>'] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('ban.unban')
     assign(@player, $player)
     if(equals(@player, '<noone>'),
@@ -78,7 +78,7 @@
         true
     )
     set_pbanned(@player, false)
-    _loadconfig()
+    include('lib.library/config.msa')
     if(equals(@broadcast_unban, 'true'),
         broadcast(concat(color(GOLD), @player, color(WHITE), ' has been ', color(GREEN), 'unbanned ', color(WHITE), 'by ', color(GOLD), player(), color(WHITE), '!')),
         true
@@ -89,7 +89,7 @@
 *:/pardon = call_alias(/unban)
 
 *:/banreason [$player='<noone>'] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('ban.reason')
     assign(@player, $player)
     assign(@reason, get_value(concat('banreason.', @player)))

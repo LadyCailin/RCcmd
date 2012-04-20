@@ -1,5 +1,5 @@
 *:/msg [$user='...nouser...'] [$='...nomessage...'] = >>>
-    _loadconfig()
+    include('lib.library/config.msa')
     _checkforperm('pm')
     assign(@user, $user)
     assign(@message, $)
