@@ -67,7 +67,7 @@
     _checkforperm('help')
     if(equals(@topic, '<null>'),
         msg(@help_meta),
-        if(is_null(eval(concat('@help_', @topic))),
+        if(eval(is_null(concat('@help_', @topic))),
             msg(@invalid_help_topic),
             msg(eval(concat('@help_', @topic)))
         )
