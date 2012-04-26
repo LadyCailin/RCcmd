@@ -66,10 +66,11 @@
     include('lib.library/config.msa')
     _checkforperm('help')
     if(equals(@topic, '<null>'),
-        msg(@help_meta),
-        if(eval(is_null(concat('@help_', @topic))),
-            msg(@invalid_help_topic),
-            msg(eval(concat('@help_', @topic)))
-        )
+        msg(@help[meta]),
+        true
+    )
+    if(array_index_exists(@help, @topic),
+        msg(@help[@topic]),
+        msg(@invalid_help_topic)
     )
 <<<

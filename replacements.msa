@@ -1,13 +1,23 @@
 *:/op [$] = >>>
-    if(or(has_permission('rccmd.op'), has_permission('bukkit.command.op.give')),
+    include('lib.library/config.msa')
+    if(equals(@enable_op, 'true'),
         run('/op '.$),
         die(@no_permission_error)
     )
 <<<
 
 *:/deop [$] = >>>
-    if(or(has_permission('rccmd.deop'), has_permission('bukkit.command.op.take')),
+    include('lib.library/config.msa')
+    if(equals(@enable_deop, 'true'),
         run('/deop '.$),
+        die(@no_permission_error)
+    )
+<<<
+
+*:/plugins [$] = >>>
+    include('lib.library/config.msa')
+    if(equals(@enable_plugins, 'true'),
+        run('/plugins '.$),
         die(@no_permission_error)
     )
 <<<
@@ -19,23 +29,3 @@
 *:/mods [$] = >>>
     call_alias('/plugins '.$)
 <<<
-
-*:/plugins [$] = >>>
-    if(or(has_permission('rccmd.plugins'), has_permission('bukkit.command.plugins')),
-        run('/plugins '.$),
-        die(@no_permission_error)
-    )
-<<<
-
-#*:/god [$player='<me>'] = >>>
-#    if(has_permission('rccmd.god'),
-#        true,
-#        die()
-#    )
-#    assign(@player, $player)
-#    if (equals(@player, '<me>'),
-#        assign(@player, player()),
-#        true
-#    )
-#    set_phealth(1000000000)
-#<<<

@@ -9,8 +9,7 @@
             equals(@time, 'dawn'), set_world_time(@world, 0),
             equals(@time, 'day'), set_world_time(@world, 6000),
             equals(@time, 'dusk'), set_world_time(@world, 12000),
-            equals(@time, 'night'), set_world_time(@world, 18000),
-            equals(@time, 'help'), run('/rules helptime')
+            equals(@time, 'night'), set_world_time(@world, 18000)
      )
 <<<
 
@@ -39,7 +38,6 @@
             equals(@set, 'sunny'),
             storm(false, @world)
             try(broadcast(concat(color(gold), player(), color(white), ' has stopped a storm on ', color(gold), @world, color(white), '.')), @blah, true)
-            try(console(concat(color(gold), player(), color(white), ' has stopped a storm on ', color(gold), @world, color(white), '.')), @blah, true),
-            equals(@set, 'help'), die(@help_command_weather)
+            try(console(concat(color(gold), player(), color(white), ' has stopped a storm on ', color(gold), @world, color(white), '.')), @blah, true)
      )
 <<<

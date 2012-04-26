@@ -83,9 +83,50 @@ assign(@death_stats_broadcast_game, 'true')
 assign(@death_stats_broadcast_irc, 'true')
 assign(@death_stats_broadcast_console, 'true')
 
+# command-related
+assign(@enable_op, 'false')
+assign(@enable_deop, 'false')
+assign(@enable_plugins, 'false')
+
 # help-related
 assign(@invalid_help_topic, color(gold).'Invalid help topic.')
-assign(@help_meta, color(gold).'Usage: '.color(white).'/help <topic>')
-assign(@help_time, color(gold).'Usage: '.color(white).'/time <current|day|dawn|afternoon|dusk|night> [world]')
-assign(@help_weather, color(gold).'Usage: '.color(white).'/weather <off|on|rain|snow|sunny> [world]')
-assign(@help_me, color(gold).'Usage: '.color(white).'/me <action>')
+assign(@help, array(
+    meta: color(gold).'Usage: '.color(white).'/help <topic>',
+    time: color(gold).'Usage: '.color(white).'/time <current|day|dawn|afternoon|dusk|night> [world]',
+    afk: color(gold).'Usage: '.color(white).'/afk',
+    listafk: color(gold).'Usage: '.color(white).'/listafk',
+    ra: color(gold).'Usage: '.color(white).'/ra',
+    save: color(gold).'Usage: '.color(white).'/save',
+    ban: color(gold).'Usage: '.color(white).'/ban <player>',
+    unban: color(gold).'Usage: '.color(white).'/unban <player>',
+    pardon: color(gold).'Usage: '.color(white).'/pardon <player>',
+    banreason: color(gold).'Usage: '.color(white).'/banreason <player>',
+    listbans: color(gold).'Usage: '.color(white).'/listbans',
+    isbanned: color(gold).'Usage: '.color(white).'/isbanned <player>',
+    bans: color(gold).'Usage: '.color(white).'/bans',
+    clear: color(gold).'Usage: '.color(white).'/clear',
+    rules: color(gold).'Usage: '.color(white).'/rules',
+    gamemode: color(gold).'Usage: '.color(white).'/gamemode',
+    gm: color(gold).'Usage: '.color(white).'/gm',
+    getpos: color(gold).'Usage: '.color(white).'/getpos [player]',
+    kill: color(gold).'Usage: '.color(white).'/kill',
+    calc: color(gold).'Usage: '.color(white).'/calc <expression>',
+    spawnmob: color(gold).'Usage: '.color(white).'/spawnmob <mob> [amount] [location]',
+    list: color(gold).'Usage: '.color(white).'/list',
+    players: color(gold).'Usage: '.color(white).'/players',
+    who: color(gold).'Usage: '.color(white).'/who',
+    online: color(gold).'Usage: '.color(white).'/online',
+    msg: color(gold).'Usage: '.color(white).'/msg <player> <message>',
+    pm: color(gold).'Usage: '.color(white).'/pm <player> <message>',
+    tell: color(gold).'Usage: '.color(white).'/tell <player> <message>',
+    sendpos: color(gold).'Usage: '.color(white).'/sendpos <player>',
+    spawn: color(gold).'Usage: '.color(white).'/spawn [player]',
+    time: color(gold).'Usage: '.color(white).'/time <current|dawn|day|dusk|night> [world]',
+    weather: color(gold).'Usage: '.color(white).'/weather <off|on|rain|snow|sunny> [world]',
+    me: color(gold).'Usage: '.color(white).'/me <action>',
+    op: color(gold).'Usage: '.color(white).'/op <player>',
+    deop: color(gold).'Usage: '.color(white).'/deop <player>',
+    pl: color(gold).'Usage: '.color(white).'/pl',
+    plugins: color(gold).'Usage: '.color(white).'/plugins',
+    mods: color(gold).'Usage: '.color(white).'/mods'
+))
