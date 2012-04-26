@@ -29,7 +29,7 @@
 
 *:/help [$] = >>>
     if(or(has_permission('rccmd.help'), has_permission('bukkit.command.help')),
-        run('/help '.$),
+        call_alias('/rccmdhelp '.$),
         die(@no_permission_error)
     )
 <<<

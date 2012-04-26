@@ -60,3 +60,15 @@
     _checkforperm('rules')
     msg(@rules_file)
 <<<
+
+*:/help [$topic='<null>'] = >>>
+    assign(@topic, $topic)
+    include('lib.library/config.msa')
+    _checkforperm('help')
+    if(equals(@topic, '<null>'),
+        msg(@help_meta),
+        if(null(@help_.@topic),
+            msg(@invalid_help_topic),
+            msg(@help_.@topic)
+        )
+    )

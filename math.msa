@@ -1,5 +1,5 @@
 *:/calc [$=''] = >>>
-    include('lib.library/config.msa')()
+    include('lib.library/config.msa')
     _checkforperm('calc')
     assign(@dog, $)
     msg(concat(color(gold), @dog, color(white), ' = ', color(green), round(expr(@dog))))

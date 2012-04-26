@@ -84,6 +84,8 @@ assign(@death_stats_broadcast_irc, 'true')
 assign(@death_stats_broadcast_console, 'true')
 
 # help-related
-assign(@help_command_time, color(gold).'Usage: '.color(white).'/time <current|day|dawn|afternoon|dusk|night> [world]')
-assign(@help_command_weather, color(gold).'Usage: '.color(white).'/weather <off|on|rain|snow|sunny> [world]')
-assign(@help_command_me, color(gold).'Usage: '.color(white).'/me <action>')
+assign(@invalid_help_topic, color(gold).'Invalid help topic.')
+assign(@help_meta, color(gold).'Usage: '.color(white).'/help <topic>')
+assign(@help_time, color(gold).'Usage: '.color(white).'/time <current|day|dawn|afternoon|dusk|night> [world]')
+assign(@help_weather, color(gold).'Usage: '.color(white).'/weather <off|on|rain|snow|sunny> [world]')
+assign(@help_me, color(gold).'Usage: '.color(white).'/me <action>')
