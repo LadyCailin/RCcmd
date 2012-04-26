@@ -67,10 +67,9 @@
     _checkforperm('help')
     if(equals(@topic, '<null>'),
         msg(@help[meta]),
-        true
-    )
-    if(array_index_exists(@help, @topic),
-        msg(@help[@topic]),
-        msg(@invalid_help_topic)
+        if(array_index_exists(@help, @topic),
+            msg(@help[@topic]),
+            msg(@invalid_help_topic)
+        )
     )
 <<<
