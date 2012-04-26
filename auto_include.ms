@@ -38,7 +38,7 @@ proc(_consolereport, @message,
 )
 
 proc(_checkforperm, @perm,
-    if(equals(player(), '~console'),
+    if( equals(player(), '~console'),
         true,
         if(has_permission(concat('rccmd.', @perm)),
             _consolereport(concat('§2', player(), '§f has the permission §6rccmd.', @perm, '§f! Access granted.'))
@@ -79,9 +79,6 @@ proc(_consolebc, @message,
 
 proc(_gamebc, @message,
     if(equals(to_lower(@broadcast_to_game), 'true'),
-        foreach(all_players(), @player,
-            tmsg(@player, @message)
-        ),
-        true
+        broadcast(@message)
     )
 )
