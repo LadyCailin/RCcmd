@@ -1,11 +1,7 @@
-*:/whitelist = /rules helpwhitelist
-
-*:/whitelist check = /rules helpwhitelist
-
 *:/whitelist check $player = >>>
     include('lib.library/config.msa')
     _checkforperm('whitelist.check')
     assign(@player, $player)
-    if(pwhitelisted(@player), msg(concat(color(GOLD), @player, color(WHITE), ' is whitelisted.')), msg(concat(color(GOLD), @player, color(WHITE), ' is not whitelisted.')))
+    if(pwhitelisted(@player), msg(concat(color(gold), @player, color(white), ' is whitelisted.')), msg(concat(color(gold), @player, color(white), ' is not whitelisted.')))
 <<<
 

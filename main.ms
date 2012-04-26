@@ -1,4 +1,3 @@
-
 include('lib.library/config.msa')
 if(equals(@rccmd_activated_msg_on_startup, 'true'),
     console(concat('§2[rccmd]§f rccmd created by Hunterm <hunterm.haxxr@gmail.com> activated!'), false),
@@ -39,6 +38,13 @@ bind(player_join, null, null, @event,
     )
 )
 
+bind(player_chat, null, null, @event,
+    if(equals(@greentext_enabled, 'true'),
+        modify_event(message, reg_replace('^>', concat(color(green), '>'), @event[message])),
+        true
+    )
+)
+
 bind(player_death, null, null, @event,
     assign(@player, @event[player])
     assign(@x, array_get(ploc(@event[player]), 0))
@@ -51,6 +57,11 @@ bind(player_death, null, null, @event,
     assign(@xplevel, plevel(@event[player]))
     assign(@mode, pmode(@event[player]))
     include('lib.library/config.msa')
+    if(equals(@death_colored, 'true'),
+        modify_event(death_message, reg_replace('^', concat(color(@death_name_color)), @event[death_message]))
+        modify_event(death_message, reg_replace(@event[player], concat(color(@death_reason_color), @event[player], color(@death_reason_color)), @event[death_message])),
+        true
+    )
     if(equals(@death_stats, 'true'),
         tmsg(@event[player], @death_stats_message),
         true

@@ -1,5 +1,5 @@
 # 'clears' the chat window
-*:/clear = >>>
+*:/clear [$] = >>>
     include('lib.library/config.msa')
     _checkforperm('chat.clear')
     msg('')
@@ -35,4 +35,28 @@
     msg('')
 <<<
 
+*:/me [$action='<null>'] = >>>
+    assign(@player, player())
+    assign(@x, array_get(ploc(@player), 0))
+    assign(@y, array_get(ploc(@player), 1))
+    assign(@z, array_get(ploc(@player), 2))
+    assign(@world, pworld(@player))
+    assign(@online, array_size(all_players()))
+    assign(@time, pworld(@player))
+    assign(@xp, ptexp(@player))
+    assign(@xplevel, plevel(@player))
+    assign(@mode, pmode(@player))
+    assign(@action, $action)
+    include('lib.library/config.msa')
+    if(equals(@action, '<null>'),
+        die(@help_command_me),
+        _ircbc(@me_format)
+        _gamebc(@me_format)
+    )
+<<<
 
+*:/rules [$] = >>>
+    include('lib.library/config.msa')
+    _checkforperm('rules')
+    msg(@rules_file)
+<<<

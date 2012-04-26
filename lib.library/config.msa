@@ -21,13 +21,13 @@ assign(@max_players, '20') # maximum amount of players on yor server.
 
 # death-related
 assign(@death_stats, 'true') # shows a message with statistics
-assign(@death_stats_message, concat('Experience you\'ve lost: ', @xp, ' orbs. -- Sucks, bro.\nCoordinates where you died: ', @x, ', ', @y, ', ', @z, '.\nI\'d get to moving, you only have about 5 minutes left till your items are gone.')) # msgvar
+assign(@death_stats_message, color(yellow).'Oh no! '.color(gold).@player.color(yellow).' lost '.@xp.' experience orbs.') # msgvar
 
 # join-related
 assign(@welcome_on_join, 'true') # show a welcome message to everyone but the player joining.
 assign(@welcome_message, concat('§eWelcome §6', @player, '§e to the server!')) # msgvar
 assign(@motd_on_join, 'true') # show the server's motd on join.
-assign(@motd, concat('Hello §6', @player, '§f, and §6welcome to ', @server_name, '§f!\n§6WWW§f: §2www.rcfreak0.com §f:: §6IRC§f: §2#rcfreak0§f@§2irc.efnet.org')) # msgvar
+assign(@motd, 'Hello §6'.@player.'§f, and §6welcome to '.@server_name.'§f!\n§6WWW§f: §2www.rcfreak0.com §f:: §6IRC§f: §2#rcfreak0§f@§2irc.efnet.org') # msgvar
 assign(@list_on_join, 'true') # execute the /list command after the motd is shown.
 
 # ban-related
@@ -41,8 +41,17 @@ assign(@spawn_world, '<null>') # on my server, i want /spawn to send you to @spa
 assign(@log_commands, 'true') # whether to log commands used by players in the console or not
 
 # lockdown-related
-assign(@group_bypass, 'Admins') # permissions group allowed to bypass lockdown kicking them
-assign(@lockdown_message, 'The server has been put into lockdown mode.\nPlease join us on IRC (#rcfreak0@irc.efnet.org) if you have any questions.')
+#assign(@group_bypass, 'Admins') # permissions group allowed to bypass lockdown kicking them
+#assign(@lockdown_message, 'The server has been put into lockdown mode.\nPlease join us on IRC (#rcfreak0@irc.efnet.org) if you have any questions.')
+
+# chat-related
+assign(@no_permission_error, 'Unknown command. Type "help" for help.') # trolled
+assign(@greentext_enabled, 'true') # whether you want players to be able to >greentext or not.
+assign(@death_colored, 'true') # whether you want deaths to have pretty colors or not.
+assign(@death_name_color, 'gold')
+assign(@death_reason_color, 'red')
+assign(@me_format, '* '.color(gold).@player.color(white).' '.@action) #msgvar
+assign(@rules_file, read('rules.txt'))
 
 # irc-related
 assign(@irc, 'true') # whether you even want to use irc or not.
@@ -50,10 +59,31 @@ assign(@irc_plugin, 'craftirc') # which irc plugin you want to use. possible val
 assign(@irc_channel, '#rcfreak0') # which channel monsterirc or plugins alike will use. set this to null
 assign(@craftirc_botid, '0') # used for craftirc's broadcasting. using '0' worked fine for me.
 
+# save-related
+assign(@save_command, '/world save *') # command used by /save. default is the one used by myworlds (multiworld plugin).
+assign(@broadcast_save, 'false')
+assign(@broadcast_save_irc, 'false')
+assign(@broadcast_save_console, 'false')
+
 # broadcast-related
-assign(@broadcast_to_irc, 'true')
-assign(@broadcast_to_console, 'false')
-assign(@broadcast_to_game, 'true')
-assign(@broadcast_ban, 'true')
-assign(@broadcast_unban, 'true')
-assign(@broadcast_kick, 'true')
+assign(@broadcast_to_irc, 'true') # master switch for broadcasting to irc.
+assign(@broadcast_to_console, 'false') # master switch for broadcasting to console.
+assign(@broadcast_to_game, 'true') # master switch for broadcasting to in-game chat.
+
+assign(@broadcast_ban_game, 'true')
+assign(@broadcast_ban_irc, 'true')
+assign(@broadcast_unban_game, 'true')
+assign(@broadcast_unban_irc, 'true')
+assign(@broadcast_kick_game, 'true')
+assign(@broadcast_kick_irc, 'false')
+
+assign(@welcome_on_join_irc, 'true')
+
+assign(@death_stats_broadcast_game, 'true')
+assign(@death_stats_broadcast_irc, 'true')
+assign(@death_stats_broadcast_console, 'true')
+
+# help-related
+assign(@help_command_time, color(gold).'Usage: '.color(white).'/time <current|day|dawn|afternoon|dusk|night> [world]')
+assign(@help_command_weather, color(gold).'Usage: '.color(white).'/weather <off|on|rain|snow|sunny> [world]')
+assign(@help_command_me, color(gold).'Usage: '.color(white).'/me <action>')

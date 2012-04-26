@@ -1,12 +1,11 @@
-*:/time [$time=none] [$world='<current>'] = >>>
+*:/time [$time='none'] [$world='<current>'] = >>>
     include('lib.library/config.msa')
     _checkforperm('time')
     assign(@time, $time)
     assign(@world, $world)
-    #if(equals(@time, none), run('/rules helptime'), die())
     if(equals(@world, '<current>'), assign(@world, pworld(player())))
-    ifelse (equals(@time, 'none'), run('/rules helptime'),
-            equals(@time, 'current'), msg(concat(color(GOLD), 'Current time in ', @world, ': ', color(WHITE), get_world_time(@world))),
+    ifelse(equals(@time, 'none'), die(@help_command_time),
+            equals(@time, 'current'), msg(concat(color(gold), 'Current time in ', @world, ': ', color(white), get_world_time(@world))),
             equals(@time, 'dawn'), set_world_time(@world, 0),
             equals(@time, 'day'), set_world_time(@world, 6000),
             equals(@time, 'dusk'), set_world_time(@world, 12000),
@@ -21,26 +20,26 @@
     assign(@world, $world)
     assign(@set, $set)
     if(equals(@world, '<current>'), assign(@world, pworld(player())))
-    ifelse (equals(@set, 'off'), 
+    ifelse(equals(@set, 'off'), 
             storm(false, @world)
-            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true)
-            try(console(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
+            try(broadcast(concat(color(gold), player(), color(white), ' has stopped a storm on ', color(gold), @world, color(white), '.')), @blah, true)
+            try(console(concat(color(gold), player(), color(white), ' has stopped a storm on ', color(gold), @world, color(white), '.')), @blah, true),
             equals(@set, 'on'),
             storm(true, @world)
-            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true) 
-            try(console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
+            try(broadcast(concat(color(gold), player(), color(white), ' has started a storm on ', color(gold), @world, color(white), '.')), @blah, true) 
+            try(console(concat(color(gold), player(), color(white), ' has started a storm on ', color(gold), @world, color(white), '.')), @blah, true),
             equals(@set, 'rain'),
             storm(true, @world)
-            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true)
-            try(console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
+            try(broadcast(concat(color(gold), player(), color(white), ' has started a storm on ', color(gold), @world, color(white), '.')), @blah, true)
+            try(console(concat(color(gold), player(), color(white), ' has started a storm on ', color(gold), @world, color(white), '.')), @blah, true),
             equals(@set, 'snow'), 
             storm(true, @world)
-            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true)
-            try(console(concat(color(GOLD), player(), color(WHITE), ' has started a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
+            try(broadcast(concat(color(gold), player(), color(white), ' has started a storm on ', color(gold), @world, color(white), '.')), @blah, true)
+            try(console(concat(color(gold), player(), color(white), ' has started a storm on ', color(gold), @world, color(white), '.')), @blah, true),
             equals(@set, 'sunny'),
             storm(false, @world)
-            try(broadcast(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true)
-            try(console(concat(color(GOLD), player(), color(WHITE), ' has stopped a storm on ', color(GOLD), @world, color(WHITE), '.')), @blah, true),
-            equals(@set, 'help'), run('/rules helpweather')
+            try(broadcast(concat(color(gold), player(), color(white), ' has stopped a storm on ', color(gold), @world, color(white), '.')), @blah, true)
+            try(console(concat(color(gold), player(), color(white), ' has stopped a storm on ', color(gold), @world, color(white), '.')), @blah, true),
+            equals(@set, 'help'), die(@help_command_weather)
      )
 <<<

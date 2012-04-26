@@ -2,10 +2,11 @@
     include('lib.library/config.msa')
     _checkforperm('spawnmob')
     assign(@mob, $mob)
-    if(equals(@mob, 'list'), die(concat(color(GOLD), 'List of mobs: ', color(WHITE), 'Blaze, CaveSpider, Chicken, Cow, Creeper, Enderdragon, Enderman, Ghast, IronGolem, MagmaCube, Mooshroom, Ocelot, Pig, PigZombie, Sheep, Silverfish, Skeleton, Slime, Spider, SpiderJockey, Squid, Villager, Wolf, Zombie.\n', color(GOLD), 'Maximum spawn limit is 50.')), true)
+    if(equals(@mob, 'list'), die(concat(color(gold), 'List of mobs: ', color(white), 'Blaze, CaveSpider, Chicken, Cow, Creeper, Enderdragon, Enderman, Ghast, IronGolem, MagmaCube, Mooshroom, Ocelot, Pig, PigZombie, Sheep, Silverfish, Skeleton, Slime, Spider, SpiderJockey, Squid, Villager, Wolf, Zombie.\n', color(gold), 'Maximum spawn limit is 50.')), true)
     assign(@amount, $amount)
     assign(@player, player())
     assign(@location, pcursor(@player))
     spawn_mob(@mob, @amount, @location)
+    msg(color(gold).'Spawned '.color(green).' ')
 <<<
 

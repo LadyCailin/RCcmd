@@ -18,7 +18,7 @@
         assign(@world, pworld(@player)),
         assign(@world, @spawn_world)
     )
-    msg(concat(color(GOLD), 'You might want to remember your coordinates: ', color(RED), @x, ', ', @y, ', ', @z, ' in \'', pworld(), '\'.'))
+    msg(concat(color(gold), 'You might want to remember your coordinates: ', color(RED), @x, ', ', @y, ', ', @z, ' in \'', pworld(), '\'.'))
     if(not(equals(@spawn_warmup, 0)),
         msg(concat(color(GRAY), 'Teleporting you to spawn in ', @spawn_warmup, ' seconds...'))
         set_timeout(multiply(@spawn_warmup, 1000), closure(set_ploc(@player, @spawn))),

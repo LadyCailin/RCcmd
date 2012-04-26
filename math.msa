@@ -2,5 +2,5 @@
     include('lib.library/config.msa')()
     _checkforperm('calc')
     assign(@dog, $)
-    msg(concat(color(GOLD), @dog, color(WHITE), ' = ', color(GREEN), round(expr(@dog))))
+    msg(concat(color(gold), @dog, color(white), ' = ', color(green), round(expr(@dog))))
 <<<

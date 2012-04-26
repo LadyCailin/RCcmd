@@ -7,7 +7,6 @@
 <<<
 
 *:/gm [$=''] = >>>
-    assign(@stuff, $)
-    call_alias(concat('/gamemode ', @stuff))
+    call_alias('/gamemode '.$)
 <<<
 

@@ -4,7 +4,7 @@
     assign(@user, $user)
     assign(@message, $)
     if(equals(@user, '...nouser...'),
-        die(run('/rules helppm')),
+        die(@help_command_msg),
         true
     )
     if(not(ponline(@user)),
@@ -12,11 +12,11 @@
         true
     )
     if(equals(@message, '...nomessage...'),
-        die(concat(color(RED), 'You must pass a <message> to the command.')),
+        die(@help_command_msg),
         true
     )
-    msg(concat(color(PINK), 'Message to ', color(RED), @user, color(PINK), ': ', color(WHITE), @message))
-    tmsg(@user, concat(color(PINK), 'Message from ', color(RED), player(), color(PINK), ': ', color(WHITE), @message))
+    msg(concat(color(PINK), 'Message to ', color(RED), @user, color(PINK), ': ', color(white), @message))
+    tmsg(@user, concat(color(PINK), 'Message from ', color(RED), player(), color(PINK), ': ', color(white), @message))
 <<<
 
 *:/tell [$=''] = >>>

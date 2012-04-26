@@ -5,7 +5,7 @@
     if(or(equals(get_value(@key), null), equals(get_value(@key), '')),
         g(
             store_value(@key, array(player()))
-            broadcast(concat(color(GOLD), player(), ' is now afk.'))
+            broadcast(concat(color(gold), player(), ' is now afk.'))
         ),
         g(
             assign(@afk, get_value(@key))
@@ -13,7 +13,7 @@
                 g(
                     array_push(@afk, player())
                     store_value(@key, @afk)
-                    broadcast(concat(color(GOLD), player(), ' is now afk.'))
+                    broadcast(concat(color(gold), player(), ' is now afk.'))
                 ),
                 g(
                     assign(@null, 1)
@@ -24,7 +24,7 @@
                         if(not(equals(array_get(@afk, @k), '')), assign(@null, 0))
                     )
                     if(equals(@null, 1), store_value(@key, ''), store_value(@key, @afk))
-                    broadcast(concat(color(GOLD), player(), ' is no longer afk.'))
+                    broadcast(concat(color(gold), player(), ' is no longer afk.'))
                 )
             )
         )

@@ -1,4 +1,9 @@
-*:/ra = >>>
+*:/ra [$] = >>>
     msg('Reloading aliases...')
-    /reloadaliases
+    run('/reloadaliases')
+<<<
+
+*:/save [$] = >>>
+    include('lib.library/config.msa')
+    run(@save_command)
 <<<

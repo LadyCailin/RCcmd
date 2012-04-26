@@ -6,7 +6,7 @@
     assign(@y, floor(array_get(@loc,1)))
     assign(@z, floor(array_get(@loc,2)))
     assign(@world, array_get(@loc,3))
-    msg(concat('Your current coordinates in \'', color(GOLD), @world, color(WHITE), '\' are\n', color(RED), @x, color(WHITE), ', ', color(RED), @y, color(WHITE), ', ', color(RED), @z, color(WHITE), '.'))
+    msg(concat('Your current coordinates in \'', color(gold), @world, color(white), '\' are\n', color(RED), @x, color(white), ', ', color(RED), @y, color(white), ', ', color(RED), @z, color(white), '.'))
 <<<
 
 *:/getpos $player = >>>
@@ -18,7 +18,7 @@
     assign(@y, floor(array_get(@loc,1)))
     assign(@z, floor(array_get(@loc,2)))
     if(ponline(@player),
-        msg(concat(color(GOLD), @player, color(WHITE), '\'s coordinates: ', color(GOLD), @x, ', ', @y, ', ', @z, '.')),
-        msg(concat(color(GOLD), @player, color(WHITE), ' is not online, or is not a player.'))
+        msg(concat(color(gold), @player, color(white), '\'s coordinates: ', color(gold), @x, ', ', @y, ', ', @z, '.')),
+        msg(concat(color(gold), @player, color(white), ' is not online, or is not a player.'))
     )
 <<<
