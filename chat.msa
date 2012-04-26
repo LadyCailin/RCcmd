@@ -49,9 +49,9 @@
     assign(@action, $action)
     include('lib.library/config.msa')
     if(equals(@action, '<null>'),
-        die(@help_command_me),
+        dixe(@help_command_me),
         _ircbc(@me_format)
-        _gamebc(@me_format)
+        broadcast(@me_format)
     )
 <<<
 
