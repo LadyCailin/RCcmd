@@ -16,6 +16,6 @@
     if(ponline(@player),
         msg(concat(color(gold), @player, color(white), ' has recieved your coordinates!'))
         tmsg(@player, concat(color(gold), player(), color(white), ' has sent you his/her coordinates:\n', color(gold), @x, ', ', @y, ', ', @z, '.')),
-        msg(concat(color(gold), @player, color(white), ' is not online, or is not a player.')))
+        msg(concat(color(gold), @player, color(white), ' is not online, or is not a player.'))
     )
 <<<

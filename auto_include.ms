@@ -87,7 +87,7 @@ proc(_time,
     assign(@epoch, time())
     assign(@minute, divide(@epoch, 60))
     assign(@hour, divide(@minute, 60))
-    assign(@day, divide(@hours, 24))
+    assign(@day, divide(@hour, 24))
     assign(@week, divide(@day, 7))
     assign(@month, divide(@week, 4))
     assign(@year, divide(@month, 12))
