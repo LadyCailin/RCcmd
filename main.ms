@@ -49,7 +49,7 @@ bind(player_chat, null, null, @event,
     )
     if(equals(@name_highlight, 'true'),
         foreach(all_players(), @pl,
-            modify_event(message, reg_replace(@pl, concat(color(@name_highlight_color), @pl, '§r')))
+            modify_event(message, reg_replace(@pl, concat(color(@name_highlight_color), @pl, '§r'), @event[message]))
         )
         true
     )
