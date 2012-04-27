@@ -16,6 +16,9 @@ bind(player_join, null, null, @event,
     assign(@xplevel, plevel(@event[player]))
     assign(@mode, pmode(@event[player]))
     include('lib.library/config.msa')
+    _time()
+    store_value(@event[player].'lastseen.usformat', @month.'/'.@day.'/'.@year.' '.@hour.':'.@minute.':'.@second)
+    store_value(@event[player].'lastseen.euformat', @day.'/'.@month.'/'.@year.' '.@hour.':'.@minute.':'.@second)
     if(equals(@motd_on_join, 'true'),
         tmsg(@event[player], concat(@motd)),
         true
@@ -39,6 +42,10 @@ bind(player_join, null, null, @event,
 )
 
 bind(player_chat, null, null, @event,
+    if(equals(@allow_chat_colors, 'true'),
+        true,
+        modify_event(message, strip_colors(@event[message]), @event[message])
+    )
     if(equals(@greentext_enabled, 'true'),
         modify_event(message, reg_replace('^>', concat(color(green), '>'), @event[message])),
         true

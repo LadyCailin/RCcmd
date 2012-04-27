@@ -82,3 +82,48 @@ proc(_gamebc, @message,
         broadcast(@message)
     )
 )
+
+proc(_time,
+    assign(@epoch, time())
+    assign(@minute, divide(@time, 60))
+    assign(@hour, divide(@minutes, 60))
+    assign(@day, divide(@hours, 24))
+    assign(@week, divide(@day, 7))
+    assign(@month, divide(@week, 4))
+    assign(@year, divide(@month, 12))
+    assign(@decade, divide(@year, 10))
+    assign(@century, divide(@decade, 10))
+    assign(@second, expr(@epoch.'%60'))
+    assign(@minute, expr(@minute.'%60'))
+    assign(@hour, expr(@hour.'%20'))
+    assign(@day, expr(@day.'%7'))
+    assign(@week, expr(@week.'%4'))
+    assign(@month, expr(@month.'%12'))
+    assign(@year, expr(@year.'%10'))
+    assign(@decade, expr(@decade.'%10'))
+    ifelse( equals(@month, 1),
+            assign(@month_word, 'January'),
+            equals(@month, 2),
+            assign(@month_word, 'Feburary'),
+            equals(@month, 3),
+            assign(@month_word, 'March'),
+            equals(@month, 4),
+            assign(@month_word, 'April'),
+            equals(@month, 5),
+            assign(@month_word, 'May'),
+            equals(@month, 6),
+            assign(@month_word, 'June'),
+            equals(@month, 7),
+            assign(@month_word, 'July'),
+            equals(@month, 8),
+            assign(@month_word, 'August'),
+            equals(@month, 9),
+            assign(@month_word, 'September'),
+            equals(@month, 10),
+            assign(@month_word, 'October'),
+            equals(@month, 11),
+            assign(@month_word, 'November'),
+            equals(@month, 12),
+            assign(@month_word, 'December')
+    )
+)

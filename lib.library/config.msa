@@ -46,6 +46,7 @@ assign(@log_commands, 'true') # whether to log commands used by players in the c
 
 # chat-related
 assign(@no_permission_error, 'Unknown command. Type "help" for help.') # trolled
+assign(@allow_chat_colors, 'false') # does not actually stack upon greentext, so keep that in mind
 assign(@greentext_enabled, 'true') # whether you want players to be able to >greentext or not.
 assign(@death_colored, 'true') # whether you want deaths to have pretty colors or not.
 assign(@death_name_color, 'gold')
