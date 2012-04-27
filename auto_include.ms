@@ -86,7 +86,7 @@ proc(_gamebc, @message,
 proc(_time,
     assign(@epoch, time())
     assign(@minute, divide(@time, 60))
-    assign(@hour, divide(@minutes, 60))
+    assign(@hour, divide(@minute, 60))
     assign(@day, divide(@hours, 24))
     assign(@week, divide(@day, 7))
     assign(@month, divide(@week, 4))
