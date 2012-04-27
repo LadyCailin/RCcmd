@@ -44,7 +44,7 @@ bind(player_join, null, null, @event,
 bind(player_chat, null, null, @event,
     if(equals(@allow_chat_colors, 'true'),
         true,
-        modify_event(message, strip_colors(@event[message]), @event[message])
+        modify_event(message, strip_colors(@event[message]))
     )
     if(equals(@greentext_enabled, 'true'),
         modify_event(message, reg_replace('^>', concat(color(green), '>'), @event[message])),
