@@ -95,3 +95,13 @@ I suck at documentation, but I suppose a nice little list of commands and their 
 
 ## where can I get help?
 Look on the [website](http://www.rcfreak0.com) for the server in the Minecraft category, then go to the [RCcmd topic](http://rcfreak0.com/viewtopic.php?f=1&t=46). Or, talk to me on the [IRC channel](irc://irc.efnet.org/#rcfreak0), on EFNet at #rcfreak0. If you've got a bug or feature request, create a request or issue in the Issues section.
+
+## credits
+- Developers
+    - Hunterm \<hunterm.haxxr@gmail.com\>
+- Bits and Pieces
+    - Auztin - Gave me some help with making /seen and the _time function work
+    - DeanDip - Used his [AFK command, and his listbans](http://forum.sk89q.com/threads/commandhelper-only-commands.437/), since at the time I didn't completely understand CH arrays
+- Ideas
+    - rcfreak0 - /seen
+    - i probably forgot some people, darn you brain!
