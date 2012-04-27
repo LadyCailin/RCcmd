@@ -49,8 +49,8 @@ bind(player_chat, null, null, @event,
     )
     if(equals(@name_highlight, 'true'),
         foreach(all_players(), @pl,
-            modify_event(message, replace(@event[message], @pl, color(@name_highlight_color).@pl))
-        ),
+            modify_event(message, reg_replace(@pl, concat(color(@name_highlight_color), @pl, '§r')))
+        )
         true
     )
     if(equals(@trim_useless_whitespace, 'true'),
