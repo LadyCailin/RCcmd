@@ -73,10 +73,3 @@
         )
     )
 <<<
-
-*:/seen [$player='<null>'] = >>>
-    assign(@player, $player)
-    include('lib.library/config.msa')
-    _checkforperm('seen')
-    msg(get_value(to_lower(@player).'.lastseen.usformat'))
-<<<

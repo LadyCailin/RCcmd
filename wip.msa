@@ -71,3 +71,14 @@
 #    )
 #    
 #<<<
+
+#_time()
+#store_value(to_lower(@event[player]).'lastseen.usformat', concat(@month, '/', @day, '/', @year, ' ', @hour, ':', @minute, ':', @second))
+#store_value(to_lower(@event[player]).'lastseen.euformat', concat(@day, '/', @month, '/', @year, ' ', @hour, ':', @minute, ':', @second))
+
+#*:/seen [$player='<null>'] = >>>
+#    assign(@player, $player)
+#    include('lib.library/config.msa')
+#    _checkforperm('seen')
+#    msg(get_value(to_lower(@player).'.lastseen.usformat'))
+#<<<

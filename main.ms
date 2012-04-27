@@ -6,9 +6,6 @@ if(equals(@rccmd_activated_msg_on_startup, 'true'),
 
 bind(player_join, null, null, @event,
     assign(@player, @event[player])
-    _time()
-    store_value(to_lower(@event[player]).'lastseen.usformat', concat(@month, '/', @day, '/', @year, ' ', @hour, ':', @minute, ':', @second))
-    store_value(to_lower(@event[player]).'lastseen.euformat', concat(@day, '/', @month, '/', @year, ' ', @hour, ':', @minute, ':', @second))
     assign(@x, array_get(ploc(@event[player]), 0))
     assign(@y, array_get(ploc(@event[player]), 1))
     assign(@z, array_get(ploc(@event[player]), 2))
@@ -48,6 +45,16 @@ bind(player_chat, null, null, @event,
     )
     if(equals(@greentext_enabled, 'true'),
         modify_event(message, reg_replace('^>', concat(color(green), '>'), @event[message])),
+        true
+    )
+    if(equals(@name_highlight, 'true'),
+        foreach(all_players(), @pl,
+            modify_event(message, replace(@event[message], @pl, color(@name_highlight_color).@pl))
+        ),
+        true
+    )
+    if(equals(@trim_useless_whitespace, 'true'),
+        modify_event(message, trim(@event[message])),
         true
     )
 )
