@@ -6,6 +6,9 @@ if(equals(@rccmd_activated_msg_on_startup, 'true'),
 
 bind(player_join, null, null, @event,
     assign(@player, @event[player])
+    _time()
+    store_value(to_lower(@event[player]).'lastseen.usformat', concat(@month, '/', @day, '/', @year, ' ', @hour, ':', @minute, ':', @second))
+    store_value(to_lower(@event[player]).'lastseen.euformat', concat(@day, '/', @month, '/', @year, ' ', @hour, ':', @minute, ':', @second))
     assign(@x, array_get(ploc(@event[player]), 0))
     assign(@y, array_get(ploc(@event[player]), 1))
     assign(@z, array_get(ploc(@event[player]), 2))
@@ -16,9 +19,6 @@ bind(player_join, null, null, @event,
     assign(@xplevel, plevel(@event[player]))
     assign(@mode, pmode(@event[player]))
     include('lib.library/config.msa')
-    _time()
-    store_value(@event[player].'lastseen.usformat', @month.'/'.@day.'/'.@year.' '.@hour.':'.@minute.':'.@second)
-    store_value(@event[player].'lastseen.euformat', @day.'/'.@month.'/'.@year.' '.@hour.':'.@minute.':'.@second)
     if(equals(@motd_on_join, 'true'),
         tmsg(@event[player], concat(@motd)),
         true
