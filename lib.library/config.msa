@@ -53,8 +53,10 @@ assign(@death_name_color, 'gold')
 assign(@death_reason_color, 'red')
 assign(@me_format, '* '.color(gold).@player.color(white).' '.@action) #msgvar
 assign(@rules_file, read('rules.txt'))
-assign(@name_highlight, 'true')
-assign(@name_highlight_color, 'gold')
+assign(@news_on_join, 'true')
+assign(@news_file, eval(read('news.txt')))
+#assign(@name_highlight, 'true')
+#assign(@name_highlight_color, 'gold')
 assign(@trim_useless_whitespace, 'true')
 
 # irc-related

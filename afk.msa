@@ -3,38 +3,30 @@
     _checkforperm('afk')
     assign(@key, 'afk')
     if(or(equals(get_value(@key), null), equals(get_value(@key), '')),
-        g(
-            store_value(@key, array(player()))
-            broadcast(concat(color(gold), player(), ' is now afk.'))
-        ),
-        g(
-            assign(@afk, get_value(@key))
-            if(not(array_contains(@afk, player())),
-                g(
-                    array_push(@afk, player())
-                    store_value(@key, @afk)
-                    broadcast(concat(color(gold), player(), ' is now afk.'))
-                ),
-                g(
-                    assign(@null, 1)
-                    for(assign(@i, 0), lt(@i, array_size(@afk)), inc(@i),
-                        if(equals(array_get(@afk, @i), player()), array_set(@afk, @i, ''))
-                    )
-                    for(assign(@k, 0), lt(@k, array_size(@afk)), inc(@k),
-                        if(not(equals(array_get(@afk, @k), '')), assign(@null, 0))
-                    )
-                    if(equals(@null, 1), store_value(@key, ''), store_value(@key, @afk))
-                    broadcast(concat(color(gold), player(), ' is no longer afk.'))
-                )
-            )
-        )
-    )
+        store_value(@key, array(player()))
+        broadcast(concat(color(gold), player(), ' is now afk.')),
+assign(@afk, get_value(@key))
+if(not(array_contains(@afk, player())),
+array_push(@afk, player())
+store_value(@key, @afk)
+broadcast(concat(color(gold), player(), ' is now afk.')),
+assign(@null, 1)
+for(assign(@i, 0), lt(@i, array_size(@afk)), inc(@i),
+if(equals(array_get(@afk, @i), player()), array_set(@afk, @i, ''))
+)
+for(assign(@k, 0), lt(@k, array_size(@afk)), inc(@k),
+if(not(equals(array_get(@afk, @k), '')), assign(@null, 0))
+)
+if(equals(@null, 1), store_value(@key, ''), store_value(@key, @afk))
+broadcast(concat(color(gold), player(), ' is no longer afk.'))
+)
+)
 <<<
 
 *:/listafk [$=''] = >>>
-    include('lib.library/config.msa')
-    _checkforperm('list.afk')
-    assign(@key, 'afk')
+include('lib.library/config.msa')
+_checkforperm('list.afk')
+assign(@key, 'afk')
     if(or(equals(get_value(@key), null), equals(get_value(@key), '')), msg('No one is AFK.'),
         g(
             assign(@afk, get_value(@key))

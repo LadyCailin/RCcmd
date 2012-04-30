@@ -1,1 +1,2 @@
-Wat.
+color(gold).'This is just the '.color(green).'shorthand'.color(gold).' version of the rules.\nPlease check the forums for a more in-depth list of rules.\n
+

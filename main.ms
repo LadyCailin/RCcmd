@@ -20,6 +20,10 @@ bind(player_join, null, null, @event,
         tmsg(@event[player], concat(@motd)),
         true
     )
+    if(equals(@news_on_join, 'true'),
+        tmsg(@event[player], concat(@news_file)),
+        true
+    )
     if(equals(@list_on_join, 'true'),
         call_alias('/list'),
         true
@@ -47,12 +51,12 @@ bind(player_chat, null, null, @event,
         modify_event(message, reg_replace('^>', concat(color(green), '>'), @event[message])),
         true
     )
-    if(equals(@name_highlight, 'true'),
-        foreach(all_players(), @pl,
-            modify_event(message, reg_replace(@pl, concat(color(@name_highlight_color), @pl, '§r'), @event[message]))
-        )
-        true
-    )
+    #if(equals(@name_highlight, 'true'),
+    #    foreach(all_players(), @pl,
+    #        modify_event(message, reg_replace(@pl, concat(color(@name_highlight_color), @pl, '§r'), @event[message]))
+    #    )
+    #    true
+    #)
     if(equals(@trim_useless_whitespace, 'true'),
         modify_event(message, trim(@event[message])),
         true
@@ -73,7 +77,7 @@ bind(player_death, null, null, @event,
     include('lib.library/config.msa')
     if(equals(@death_colored, 'true'),
         modify_event(death_message, reg_replace('^', concat(color(@death_name_color)), @event[death_message]))
-        modify_event(death_message, reg_replace(@event[player], concat(color(@death_reason_color), @event[player], color(@death_reason_color)), @event[death_message])),
+        modify_event(death_message, reg_replace(@event[player], concat(color(@death_name_color), @event[player], color(@death_reason_color)), @event[death_message])),
         true
     )
     if(equals(@death_stats, 'true'),
