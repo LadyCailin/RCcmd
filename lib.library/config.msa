@@ -51,12 +51,11 @@ assign(@greentext_enabled, 'true') # whether you want players to be able to >gre
 assign(@death_colored, 'true') # whether you want deaths to have pretty colors or not.
 assign(@death_name_color, 'gold')
 assign(@death_reason_color, 'red')
-assign(@me_format, '* '.color(gold).@player.color(white).' '.@action) #msgvar
+# not used right now
+#assign(@me_format, '* '.color(gold).@player.color(white).' '.@action) #msgvar
 assign(@rules_file, read('rules.txt'))
 assign(@news_on_join, 'true')
-assign(@news_file, eval(read('news.txt')))
-#assign(@name_highlight, 'true')
-#assign(@name_highlight_color, 'gold')
+assign(@news_file, 'news.txt')
 assign(@trim_useless_whitespace, 'true')
 
 # irc-related

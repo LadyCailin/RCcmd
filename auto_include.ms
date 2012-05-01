@@ -38,11 +38,9 @@ proc(_consolereport, @message,
 )
 
 proc(_checkforperm, @perm,
-    if( equals(player(), '~console'),
-        true,
+    if(not(equals(player(), '~console')),
         if(has_permission(concat('rccmd.', @perm)),
-            _consolereport(concat('§2', player(), '§f has the permission §6rccmd.', @perm, '§f! Access granted.'))
-            true,
+            _consolereport(concat('§2', player(), '§f has the permission §6rccmd.', @perm, '§f! Access granted.')),
             _consolereport(concat('§c', player(), '§f does not have the permission§2 ', 'rccmd.', @perm, '§f! Access denied.'))
             include('lib.library/config.msa')
             die(@no_permission_error)

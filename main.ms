@@ -21,7 +21,7 @@ bind(player_join, null, null, @event,
         true
     )
     if(equals(@news_on_join, 'true'),
-        tmsg(@event[player], concat(@news_file)),
+        tmsg(@event[player], read(@news_file)),
         true
     )
     if(equals(@list_on_join, 'true'),
