@@ -1,6 +1,11 @@
 # 'clears' the chat window
 *:/clear [$] = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('chat.clear')
     msg('')
     msg('')
@@ -57,6 +62,11 @@
 
 *:/rules [$] = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('rules')
     msg(@rules_file)
 <<<
@@ -64,6 +74,11 @@
 *:/help [$topic='<null>'] = >>>
     assign(@topic, $topic)
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('help')
     if(equals(@topic, '<null>'),
         msg(@help[meta]),
@@ -73,3 +88,4 @@
         )
     )
 <<<
+

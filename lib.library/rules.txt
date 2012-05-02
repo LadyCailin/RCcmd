@@ -1,2 +1,3 @@
-color(gold).'This is just the '.color(green).'shorthand'.color(gold).' version of the rules.\nPlease check the forums for a more in-depth list of rules.\n
-
+color(gold).'This is just the '.color(green).'shorthand'.color(gold).' version of the rules.\n
+Please check the forums for a more in-depth list of rules.\n'.color(gold).'1. Don\'t be stupid.\n
+'.color(gold).'2. Don\'t grief.\n'.color(gold).'3. Use common sense.\n'

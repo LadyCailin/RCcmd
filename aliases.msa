@@ -1,9 +1,20 @@
 *:/ra [$] = >>>
+    include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     msg('Reloading aliases...')
     run('/reloadaliases')
 <<<
 
 *:/save [$] = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     run(@save_command)
 <<<

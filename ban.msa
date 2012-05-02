@@ -1,5 +1,10 @@
 *:/listbans = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('ban.list')
     assign(@bans, get_banned_players())
     assign(@bl, 'Banned players: ')
@@ -20,6 +25,11 @@
 *:/isbanned = /help isbanned
 *:/isbanned $player = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('ban.check')
     assign(@player, $player)
     if(pbanned(@player), msg(concat(color(gold), @player, color(white), ' is banned.')), msg(concat(color(gold), @player, color(white), ' is not banned.')))
@@ -27,6 +37,11 @@
 
 *:/ban [$player='<noone>'] [$='<noreason>'] = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('ban')
     assign(@player, $player)
     assign(@reason, $)
@@ -75,6 +90,11 @@
 
 *:/unban [$player='<noone>'] = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('ban.unban')
     assign(@player, $player)
     if(equals(@player, '<noone>'),
@@ -98,6 +118,11 @@
 
 *:/banreason [$player='<noone>'] = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('ban.reason')
     assign(@player, $player)
     assign(@reason, get_value(concat('banreason.', @player)))

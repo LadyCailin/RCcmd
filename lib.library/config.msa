@@ -89,9 +89,49 @@ assign(@death_stats_broadcast_irc, 'true')
 assign(@death_stats_broadcast_console, 'true')
 
 # command-related
-assign(@enable_op, 'false')
-assign(@enable_deop, 'false')
-assign(@enable_plugins, 'false')
+# generated with this command:
+# echo "assign(@enabled_commands, array("; grep '^\*:/' * | cut -d':' -f2-3 | cut -d' ' -f1 | cut -d':' -f2 | cut -d'/' -f2 | sed "s/^/    /;s/$/: 'true',/" | uniq; echo ")"
+assign(@enabled_commands, array(
+    afk: 'true',
+    listafk: 'true',
+    ra: 'true',
+    save: 'true',
+    listbans: 'true',
+    bans: 'true',
+    banlist: 'true',
+    isbanned: 'true',
+    ban: 'true',
+    unban: 'true',
+    pardon: 'true',
+    banreason: 'true',
+    clear: 'true',
+    rules: 'true',
+    help: 'true',
+    gamemode: 'true',
+    gm: 'true',
+    getpos: 'true',
+    kill: 'true',
+    calc: 'true',
+    spawnmob: 'true',
+    list: 'true',
+    who: 'true',
+    players: 'true',
+    online: 'true',
+    msg: 'true',
+    tell: 'true',
+    pm: 'true',
+    op: 'true',
+    deop: 'true',
+    plugins: 'true',
+    pl: 'true',
+    mods: 'true',
+    sendpos: 'true',
+    spawn: 'true',
+    whitelist: 'true',
+    time: 'true',
+    weather: 'true',
+)
+
 
 # help-related
 assign(@invalid_help_topic, color(gold).'Invalid help topic.')

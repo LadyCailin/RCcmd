@@ -1,12 +1,15 @@
 *:/spawn [$player='<me>'] = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('spawn')
     assign(@player, $player)
     if(equals(@player, '<me>'),
         assign(@player, player()),
-        include('lib.library/config.msa')
-    _checkforperm('spawn.other')
-        true
+        _checkforperm('spawn.other')
     )
     assign(@spawn, get_spawn(@world))
     assign(@loc, ploc(player()))
@@ -14,6 +17,11 @@
     assign(@y, floor(array_get(@loc,1)))
     assign(@z, floor(array_get(@loc,2)))
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     if(equals(@spawn_world, '<null>'),
         assign(@world, pworld(@player)),
         assign(@world, @spawn_world)

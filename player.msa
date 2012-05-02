@@ -1,5 +1,10 @@
 *:/list [$=''] = >>>
     include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
     _checkforperm('list')
     assign(@players, all_players())
     assign(@formatplayers, replace(@players, '{', ''))
@@ -7,6 +12,32 @@
     msg(concat(color(GOLD), length(@players), ' player(s) are currently on: ', color(white), @formatplayers))
 <<<
 
-*:/who [$=''] = call_alias(concat('/list ', $))
-*:/players [$=''] = call_alias(concat('/list ', $))
-*:/online [$=''] = call_alias(concat('/list ', $))
+*:/who [$=''] = >>>
+    include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
+    call_alias(concat('/list ', $))
+<<<
+
+*:/players [$=''] = >>>
+    include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
+    call_alias(concat('/list ', $))
+<<<
+
+*:/online [$=''] = >>>
+    include('lib.library/config.msa')
+    assign(@command, array_get(reg_split(' ', get_cmd()), 1))
+    if(not(equals(@enabled_commands[@command], 'true')),
+        run(@command.$)
+        die()
+    )
+    call_alias(concat('/list ', $))
+<<<
