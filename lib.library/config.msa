@@ -130,8 +130,7 @@ assign(@enabled_commands, array(
     whitelist: 'true',
     time: 'true',
     weather: 'true',
-)
-
+))
 
 # help-related
 assign(@invalid_help_topic, color(gold).'Invalid help topic.')
