@@ -2,7 +2,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     _checkforperm('ban.list')
@@ -27,7 +27,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     _checkforperm('ban.check')
@@ -39,7 +39,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     _checkforperm('ban')
@@ -92,7 +92,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     _checkforperm('ban.unban')
@@ -120,7 +120,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     _checkforperm('ban.reason')

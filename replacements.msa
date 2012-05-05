@@ -2,7 +2,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     if(equals(@fake_permerror_op, 'true'),
@@ -15,7 +15,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     if(equals(@fake_permerror_deop, 'true'),
@@ -28,7 +28,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     if(equals(@fake_permerror_plugins, 'true'),
@@ -41,7 +41,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     call_alias('/plugins '.$)
@@ -51,7 +51,7 @@
     include('lib.library/config.msa')
     assign(@command, array_get(reg_split(' ', get_cmd()), 1))
     if(not(equals(@enabled_commands[@command], 'true')),
-        run(@command.$)
+        run(@command.' '.$)
         die()
     )
     call_alias('/plugins '.$)
